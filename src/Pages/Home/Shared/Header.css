@@ -1,0 +1,14 @@
+li{
+    padding: 6px;
+    font-weight: bold;
+    
+    
+}
+li :hover{
+    background: white;
+}
+li .active{
+    /* color: white !important; */
+    /* background-color:rgb(202, 138, 4) !important ; */
+    border-bottom: 2px solid red;
+}
