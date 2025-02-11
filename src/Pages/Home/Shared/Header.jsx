@@ -6,8 +6,9 @@ import CommonButton from '../../../Components/CommonButton';
 const Header = () => {
     const links =<>
      <li>< NavLink to={'/'}>Home</NavLink></li>
-     <li>< NavLink to={'/food'}>Food</NavLink></li>
-     <li>< NavLink to={'/About'}>about</NavLink></li>
+     <li>< NavLink to={'/all-food'}>All Food</NavLink></li>
+     <li>< NavLink to={'/gallery'}>Gallery</NavLink></li>
+     <li>< NavLink to={'/sign-up'}>Sign Up</NavLink></li>
     </>
     return (
         <div className='bg-white '>
