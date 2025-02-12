@@ -5,6 +5,7 @@ import CommonButton from '../../Components/CommonButton'
 import { Link } from 'react-router-dom';
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { FaRegEye } from "react-icons/fa6";
+import useAuth from '../../Hook/useAuth';
 
 
 
@@ -12,6 +13,7 @@ import { FaRegEye } from "react-icons/fa6";
 const SignUp = () => {
     const [err, setError] = useState("");
     const [hide, setHide] = useState(true);
+    const {createUser} = useAuth()
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -28,7 +30,17 @@ const SignUp = () => {
         } else if (!/^(?=.*[A-Z])/.test(password)) {
             setError('Password must include at least one uppercase letter!');
             return;
+        } else if (!/^(?=.*[a-z])/.test(password)) {
+            setError('Password must include at least one lowercase letter!');
+            return;
         }
+        createUser(email,password)
+        .then(res => {
+            console.log(res.user)
+        })
+        .catch((err) => {
+            console.log(err.message)
+        })
 
         // createUser(email, password)
         //     .then(result => {
