@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './Header.css'
 import CommonButton from '../../../Components/CommonButton';
 
@@ -43,7 +43,7 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <CommonButton text={'Sign In'}></CommonButton>
+                   <Link to={'/sign-in'}><CommonButton text={'Sign In'}></CommonButton></Link> 
                 </div>
             </div>
         </div>
