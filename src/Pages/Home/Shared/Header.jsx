@@ -2,14 +2,25 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './Header.css'
 import CommonButton from '../../../Components/CommonButton';
+import useAuth from '../../../Hook/useAuth';
 
 const Header = () => {
+    const {user,logOutUser} = useAuth();
     const links =<>
      <li>< NavLink to={'/'}>Home</NavLink></li>
      <li>< NavLink to={'/all-food'}>All Food</NavLink></li>
      <li>< NavLink to={'/gallery'}>Gallery</NavLink></li>
-     <li>< NavLink to={'/sign-up'}>Sign Up</NavLink></li>
+     {
+        user?<li>< NavLink to={'/my-food'}>My Food</NavLink></li>
+        : <li>< NavLink to={'/sign-up'}>Sign Up</NavLink></li>
+     }
+
     </>
+    const handleLogOut = () =>{
+        console.log('klgjdlk')
+        logOutUser()
+    }
+    console.log(user)
     return (
         <div className='bg-white '>
             <div className="navbar  max-w-[1600px] mx-auto">
@@ -43,7 +54,16 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                   <Link to={'/sign-in'}><CommonButton text={'Sign In'}></CommonButton></Link> 
+                    {!user?<Link to={'/sign-in'}><CommonButton text={'Sign In'}></CommonButton></Link> :(
+                        <div className='flex gap-4 items-center'>
+                            <Link to={'/my-account'}>
+                                <img title={user?.displayName} className='w-8 h-8 rounded-full bg-amber-200
+                                outline-1' src={user.photoURL} alt="" />
+                            </Link>
+                            <CommonButton text={'Sign Out'} onClick={handleLogOut} ></CommonButton>
+                        </div>
+                    )}
+                   
                 </div>
             </div>
         </div>

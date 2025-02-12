@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import Lottie from "lottie-react";
 import signUp from '../../assets/signUp.json';
 import CommonButton from '../../Components/CommonButton'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { FaRegEye } from "react-icons/fa6";
 import useAuth from '../../Hook/useAuth';
+import { updateProfile } from 'firebase/auth';
+import { auth } from '../../Firebase/firebaseConfig';
+import Swal from 'sweetalert2';
 
 
 
@@ -13,13 +16,17 @@ import useAuth from '../../Hook/useAuth';
 const SignUp = () => {
     const [err, setError] = useState("");
     const [hide, setHide] = useState(true);
-    const {createUser} = useAuth()
+    const {createUser} = useAuth();
+    const navigate = useNavigate();
 
     const handleRegister = (e) => {
         e.preventDefault();
         setError('');
         const name = e.target.name.value;
-        const photo = e.target.photo.value;
+        let photo = e.target.photo.value;
+        if(!photo){
+            photo = 'https://i.ibb.co.com/3YvXRrH0/user.png'
+        }
         const email = e.target.email.value;
         const password = e.target.password.value;
         console.log(name, photo, email, password)
@@ -36,7 +43,20 @@ const SignUp = () => {
         }
         createUser(email,password)
         .then(res => {
-            console.log(res.user)
+            updateProfile(res.user, {
+                displayName:name,
+                photoURL:photo
+            })
+            .then(_ => {
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Account Created Successfully!",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                navigate('/')
+            })
         })
         .catch((err) => {
             console.log(err.message)
