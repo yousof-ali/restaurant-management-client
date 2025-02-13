@@ -1,0 +1,103 @@
+[
+    {
+      "name": "Margherita Pizza",
+      "image": "https://example.com/margherita-pizza.jpg",
+      "category": "Italian",
+      "quantity": 3,
+      "price": 12.99,
+      "origin": "Italy",
+      "rating": 4.8,
+      "description": "A classic Italian pizza topped with fresh mozzarella, tomatoes, basil, and olive oil. The dough is hand-stretched and baked in a wood-fired oven for a crispy crust."
+    },
+    {
+      "name": "Sushi Platter",
+      "image": "https://example.com/sushi-platter.jpg",
+      "category": "Japanese",
+      "quantity": 6,
+      "price": 24.99,
+      "origin": "Japan",
+      "rating": 4.7,
+      "description": "An assortment of sushi rolls including salmon, tuna, and avocado rolls, served with soy sauce, wasabi, and pickled ginger."
+    },
+    {
+      "name": "Chicken Biryani",
+      "image": "https://example.com/chicken-biryani.jpg",
+      "category": "Indian",
+      "quantity": 4,
+      "price": 14.99,
+      "origin": "India",
+      "rating": 4.6,
+      "description": "A fragrant rice dish cooked with marinated chicken, basmati rice, saffron, and aromatic spices such as cardamom, cloves, and cinnamon."
+    },
+    {
+      "name": "Tacos al Pastor",
+      "image": "https://example.com/tacos-al-pastor.jpg",
+      "category": "Mexican",
+      "quantity": 5,
+      "price": 10.99,
+      "origin": "Mexico",
+      "rating": 4.5,
+      "description": "Traditional Mexican tacos made with marinated pork, pineapple, onions, and cilantro, served on corn tortillas with salsa."
+    },
+    {
+      "name": "French Croissant",
+      "image": "https://example.com/croissant.jpg",
+      "category": "French",
+      "quantity": 2,
+      "price": 4.50,
+      "origin": "France",
+      "rating": 4.9,
+      "description": "A buttery, flaky pastry made with layers of dough and butter, rolled and folded multiple times before being baked to perfection."
+    },
+    {
+      "name": "Cheeseburger",
+      "image": "https://example.com/cheeseburger.jpg",
+      "category": "Fast Food",
+      "quantity": 7,
+      "price": 8.99,
+      "origin": "USA",
+      "rating": 4.3,
+      "description": "A juicy beef patty with melted cheese, lettuce, tomato, and pickles, served on a toasted bun."
+    },
+    {
+      "name": "French Fries",
+      "image": "https://example.com/french-fries.jpg",
+      "category": "Fast Food",
+      "quantity": 8,
+      "price": 3.99,
+      "origin": "Belgium",
+      "rating": 4.2,
+      "description": "Crispy golden fries served with ketchup or mayonnaise."
+    },
+    {
+      "name": "Pasta Carbonara",
+      "image": "https://example.com/pasta-carbonara.jpg",
+      "category": "Italian",
+      "quantity": 1,
+      "price": 14.99,
+      "origin": "Italy",
+      "rating": 4.7,
+      "description": "Creamy pasta made with eggs, cheese, pancetta, and black pepper."
+    },
+    {
+      "name": "Ramen",
+      "image": "https://example.com/ramen.jpg",
+      "category": "Japanese",
+      "quantity": 5,
+      "price": 11.99,
+      "origin": "Japan",
+      "rating": 4.6,
+      "description": "A rich broth with wheat noodles, topped with sliced pork, egg, green onions, and nori."
+    },
+    {
+      "name": "Chocolate Cake",
+      "image": "https://example.com/chocolate-cake.jpg",
+      "category": "Desserts",
+      "quantity": 6,
+      "price": 6.99,
+      "origin": "France",
+      "rating": 4.9,
+      "description": "A rich and moist chocolate cake topped with creamy chocolate frosting."
+    }
+  ]
+  

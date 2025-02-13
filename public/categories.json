@@ -1,0 +1,33 @@
+[
+    {
+      "id": 1,
+      "name": "Pizza",
+      "image": "https://i.ibb.co.com/5Wd6rSMr/icons8-pizza-96.png"
+    },
+    {
+      "id": 2,
+      "name": "Combo",
+      "image": "https://i.ibb.co.com/k2T4nvsm/icons8-street-food-100.png"
+    },
+    {
+      "id": 3,
+      "name": "Chicken",
+      "image": "https://i.ibb.co.com/C3Kqq142/icons8-chicken-box-64.png"
+    },
+    {
+      "id": 4,
+      "name": "Kids Menu",
+      "image": "https://i.ibb.co.com/mrTRFhfL/icons8-food-bar-100.png"
+    },
+    {
+      "id": 5,
+      "name": "Burger",
+      "image": "https://i.ibb.co.com/wr4SbdRk/icons8-burger-100.png"
+    },
+    {
+      "id": 6,
+      "name": "Roll",
+      "image": "https://i.ibb.co.com/FLVM6pQf/icons8-roll-64.png"
+    }
+  ]
+  

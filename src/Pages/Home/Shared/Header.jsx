@@ -5,18 +5,18 @@ import CommonButton from '../../../Components/CommonButton';
 import useAuth from '../../../Hook/useAuth';
 
 const Header = () => {
-    const {user,logOutUser} = useAuth();
-    const links =<>
-     <li>< NavLink to={'/'}>Home</NavLink></li>
-     <li>< NavLink to={'/all-food'}>All Food</NavLink></li>
-     <li>< NavLink to={'/gallery'}>Gallery</NavLink></li>
-     {
-        user?<li>< NavLink to={'/my-food'}>My Food</NavLink></li>
-        : <li>< NavLink to={'/sign-up'}>Sign Up</NavLink></li>
-     }
+    const { user, logOutUser } = useAuth();
+    const links = <>
+        <li>< NavLink to={'/'}>Home</NavLink></li>
+        <li>< NavLink to={'/all-food'}>All Food</NavLink></li>
+        <li>< NavLink to={'/gallery'}>Gallery</NavLink></li>
+        {
+            user ? <li>< NavLink to={'/my-food'}>My Food</NavLink></li>
+                : <li>< NavLink to={'/sign-up'}>Sign Up</NavLink></li>
+        }
 
     </>
-    const handleLogOut = () =>{
+    const handleLogOut = () => {
         console.log('klgjdlk')
         logOutUser()
     }
@@ -46,7 +46,7 @@ const Header = () => {
                             {links}
                         </ul>
                     </div>
-                    <a href='/' className="cursor-pointer flex items-center gap-2  text-xl"><img className='w-12' src="/logo.png" alt="logo" /><span>Restaurant</span></a>
+                    <a href='/' className="cursor-pointer flex items-center gap-2  text-xl"><img className='w-12' src="/logo.png" alt="logo" /><span>Delish</span></a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -54,17 +54,42 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    {!user?<Link to={'/sign-in'}><CommonButton text={'Sign In'}></CommonButton></Link> :(
-                        <div className='flex gap-4 items-center'>
-                            <Link to={'/my-account'}>
-                                <img title={user?.displayName} className='w-8 h-8 rounded-full bg-amber-200
-                                outline-1' src={user.photoURL} alt="" />
-                            </Link>
-                            <CommonButton text={'Sign Out'} onClick={handleLogOut} ></CommonButton>
+                    {user ? (
+                        <div className="flex md:gap-4 gap-1 items-center">
+                            <div className="dropdown dropdown-bottom dropdown-end relative">
+                                <img
+                                    tabIndex={0}
+                                    title={user?.displayName}
+                                    className="w-8 h-8 rounded-full bg-amber-200 cursor-pointer focus:outline-none"
+                                    src={user?.photoURL}
+                                    alt={user?.displayName || "User Avatar"}
+                                />
+                                <ul
+                                    tabIndex={0}
+                                    className="dropdown-content menu bg-base-100 rounded-box z-[1] w-48 p-2 shadow right-0"
+                                >
+                                    <li className="hover:border rounded-md">
+                                        <Link to="/my-food">My Food</Link>
+                                    </li>
+                                    <li className="hover:border rounded-md">
+                                        <Link to="/add-food">Add Food</Link>
+                                    </li>
+                                    <li className="hover:border rounded-md">
+                                        <Link to="/my-orders">My Orders</Link>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            {/* Sign Out Button */}
+                            <CommonButton text="Sign Out" onClick={handleLogOut} />
                         </div>
+                    ) : (
+                        <Link to="/sign-in">
+                            <CommonButton text="Sign In" />
+                        </Link>
                     )}
-                   
                 </div>
+
             </div>
         </div>
     );

@@ -9,6 +9,7 @@ import SignIn from '../Pages/SignIn/SignIn';
 import Error from '../Pages/ErrorPage/Error';
 import MyFood from '../Pages/MyFood/MyFood';
 import PrivateRouter from './PrivateRouter'
+import AllFood from '../Pages/AllFood/AllFood';
 
 const router = createBrowserRouter([
     {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
             {
                 path:'/my-food',
                 element:<PrivateRouter><MyFood></MyFood></PrivateRouter>
+            },
+            {
+                path:'/all-food',
+                element:<AllFood></AllFood>
             }
         ]
     }
