@@ -10,6 +10,7 @@ import Error from '../Pages/ErrorPage/Error';
 import MyFood from '../Pages/MyFood/MyFood';
 import PrivateRouter from './PrivateRouter'
 import AllFood from '../Pages/AllFood/AllFood';
+import Details from '../Pages/Details/Details';
 
 const router = createBrowserRouter([
     {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
             {
                 path:'/all-food',
                 element:<AllFood></AllFood>
+            },
+            {
+                path:'/details/:id',
+                element:<PrivateRouter><Details></Details></PrivateRouter>,
             }
         ]
     }

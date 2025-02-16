@@ -7,21 +7,24 @@ import FoodCard from '../../Components/FoodCard';
 const AllFood = () => {
     const [allfood,setAllFood] = useState([]);
     useEffect(() => {
-        fetch('/food.json')
+        fetch('http://localhost:5000/foods')
         .then(res => res.json())
         .then(result => {
             setAllFood(result)
         })
-    },[])
+        .catch((err) => {
+            console.log(err.message)
+        })
+    },[]);
     return (
         <div className='font-signika'>
             <div className='rounded-md  relative'>
-                <img className='h-[30vh] w-full' src="/allFood.png" alt="" />
+                <img className='md:h-[30vh] h-[20vh] w-full' src="/allFood.png" alt="" />
                 <div className='bg-black absolute top-0 w-full h-full opacity-50'>
                     
                 </div>
-                <div className='absolute md:top-20 md:left-[25%] top-18 left-5 lg:top-[45%] lg:left-[30%] text-white font-bold font-signika '>
-                <h2 className='md:text-4xl text-3xl'>
+                <div className='absolute flex justify-center items-center top-0 w-full h-full'>
+                <h2 className='md:text-4xl text-white text-3xl'>
                 Discover Delicious Combos
                     </h2>
                 </div>
