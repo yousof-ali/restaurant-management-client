@@ -8,6 +8,8 @@ import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 import Swal from 'sweetalert2';
 import useAuth from '../../Hook/useAuth';
+import FoodCard from '../../Components/FoodCard';
+import RelatedCard from '../../Components/RelatedCard';
 
 
 
@@ -59,13 +61,14 @@ const Details = () => {
         fetch(`http://localhost:5000/foods?category=${category}`)
         .then(res => res.json())
         .then(result => {
-            setRelated(result);
-            console.log(result)
+            const filtered = result.filter(single => single._id !== _id);
+            setRelated(filtered);
+            // console.log(result)
         })
         .catch((err) => {
             console.log(err.message);
         })
-    } ,[category])
+    } ,[category,_id])
 
     const handlePurchase = () => {
         const product_name = name;
@@ -221,8 +224,13 @@ const Details = () => {
                         </div>
                     </div>
                 </div>
-                <div className='md:ml-6 md:pt-0 pt-6'>
+                <div className='md:ml-6 flex-1 md:pt-0 pt-6'>
                     <h2 className='text-3xl font-bold mb-4'>Related Product</h2>
+                    <div className='grid grid-cols-3 gap-4 md:grid-cols-3 lg:grid-cols-4'>
+                        {
+                            related.map(single => <RelatedCard data={single} key={single._id}></RelatedCard>)
+                        }
+                    </div>
                 </div>
             </div>
 
