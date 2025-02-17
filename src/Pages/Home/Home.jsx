@@ -1,12 +1,14 @@
 import React from 'react';
 import Slider from './Shared/Slider';
 import Cate from './Shared/Cate';
+import TopPurchase from './Shared/TopPurchase';
 
 const Home = () => {
     return (
-        <div>
+        <div className='font-signika'>
             <Slider></Slider>
             <Cate></Cate>
+            <TopPurchase></TopPurchase>
         </div>
     );
 };
