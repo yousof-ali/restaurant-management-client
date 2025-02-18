@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import useAuth from '../../Hook/useAuth';
 import CommonButton from '../../Components/CommonButton'
+import Swal from 'sweetalert2';
 
 const AddFood = () => {
     const { user } = useAuth();
     console.log(user)
     const [category, setCategory] = useState('')
-    const [chef,setChef] = useState('');
-    const [origin,setOrigin] = useState('');
-    const [cookinTime,setCookingTime] = useState('')
+    const [chef, setChef] = useState('');
+    const [origin, setOrigin] = useState('');
+    const [cookinTime, setCookingTime] = useState('')
+    const [description, setDescription] = useState('')
+    const [chef_special, setChef_special] = useState('')
+    const [ingredients, setIngredients] = useState('');
     const handleCategory = (e) => {
         setCategory(e.target.value)
 
@@ -18,17 +22,65 @@ const AddFood = () => {
     }
     const handleOrigin = (e) => {
         setOrigin(e.target.value);
-        
+
     }
     const handleTime = (e) => {
         setCookingTime(e.target.value);
-        
+
     }
-    
+    const handleDescription = (e) => {
+        setDescription(e.target.value);
+
+    }
+    const handleChefComment = (e) => {
+        setChef_special(e.target.value);
+
+    };
+    const handleIngredients = (e) => {
+        setIngredients(e.target.value);
+    }
+
 
     const handleAdd = (e) => {
         e.preventDefault();
-        console.log(category,origin,chef,cookinTime)
+        const form = e.target;
+        const name = form.name.value;
+        const image = form.image.value;
+        const quantity = parseInt(form.quantity.value);
+        const price = parseInt(form.price.value);
+        const email = form.email.value;
+        const cooking_time = `${cookinTime} minutes`
+        const rating = parseInt((Math.random() * (5 - 2) + 2).toFixed(1));
+
+
+        const newFood = { name, image, quantity, price, email, category, cooking_time, chef_id: chef, origin, description, chef_special, ingredients: ingredients.split('\n'), rating }
+        console.log(newFood);
+
+        fetch('http://localhost:5000/new-food', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newFood)
+        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.insertedId) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Your work has been saved",
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+
+                      form.reset();
+
+                }
+            })
+            .catch(() => {
+                console.log(err.message)
+            })
     }
     return (
         <div>
@@ -185,7 +237,7 @@ const AddFood = () => {
 
                             <p className="label-text font-bold">Ingredients</p>
 
-                            <textarea required className="textarea w-full mt-2 focus:outline-green-500 focus:border-0 border-black border-2 " placeholder="Each Ingredient in new line"></textarea>
+                            <textarea onChange={handleIngredients} required className="textarea w-full mt-2 focus:outline-green-500 focus:border-0 border-black border-2 " placeholder="Each Ingredient in new line"></textarea>
 
                         </div>
 
@@ -193,7 +245,7 @@ const AddFood = () => {
 
                             <p className="label-text font-bold">Details</p>
 
-                            <textarea required className="textarea mt-2 w-full focus:outline-green-500 focus:border-0 border-black border-2 " placeholder="Food Details"></textarea>
+                            <textarea onChange={handleDescription} required className="textarea mt-2 w-full focus:outline-green-500 focus:border-0 border-black border-2 " placeholder="Food Details"></textarea>
 
                         </div>
 
@@ -206,18 +258,18 @@ const AddFood = () => {
                             <p className="label-text font-bold">Chef ID</p>
 
                             <select onChange={handleChef} className='p-2 border-0 border-b-2 w-full focus:border-green-500 outline-0' name="" required id="">
-                                    <option disabled selected value="">
-                                        Select Chef ID
-                                    </option>
-                                    
-                                    <option value="chef001">chef001</option>
-                                    <option value="chef002">chef002</option>
-                                    <option value="chef003">chef003</option>
-                                    <option value="chef004">chef004</option>
-                                    <option value="chef005">chef005</option>
-                                    <option value="chef006">chef006</option>
-                                    <option value="chef007">chef007</option>
-                                </select>
+                                <option disabled selected value="">
+                                    Select Chef ID
+                                </option>
+
+                                <option value="chef001">chef001</option>
+                                <option value="chef002">chef002</option>
+                                <option value="chef003">chef003</option>
+                                <option value="chef004">chef004</option>
+                                <option value="chef005">chef005</option>
+                                <option value="chef006">chef006</option>
+                                <option value="chef007">chef007</option>
+                            </select>
 
                         </div>
 
@@ -225,13 +277,13 @@ const AddFood = () => {
 
                             <p className="label-text font-bold">Chef Comment</p>
 
-                            <textarea required className="textarea mt-2 w-full focus:outline-green-500 focus:border-0 border-black border-2 " placeholder="Chef Comment"></textarea>
+                            <textarea onChange={handleChefComment} required className="textarea mt-2 w-full focus:outline-green-500 focus:border-0 border-black border-2 " placeholder="Chef Comment"></textarea>
 
                         </div>
 
                     </div>
                     <div className="form-control flex justify-center mt-8">
-                        <CommonButton  text={"Add Food"}></CommonButton>
+                        <CommonButton text={"Add Food"}></CommonButton>
                     </div>
                 </form>
             </div>

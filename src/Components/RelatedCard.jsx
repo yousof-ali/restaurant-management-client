@@ -10,7 +10,7 @@ const RelatedCard = ({data}) => {
                 <img className='rounded-t-2xl ' src={image} alt="" />
             </div>
             <div className='my-1 p-2'>
-                <h2 className='text-lg font-bold'>{name}</h2>
+                <h2 className=' font-bold'>{name}</h2>
             </div>
         </div>
         </Link>
