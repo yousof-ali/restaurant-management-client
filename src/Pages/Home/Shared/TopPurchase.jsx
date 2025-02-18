@@ -3,6 +3,7 @@ import FoodCard from '../../../Components/FoodCard';
 import CommonButton from '../../../Components/CommonButton';
 import PrimaryButton from "../../../Components/PrimaryButton"
 import { Link } from 'react-router-dom';
+import Loader from '../../../Components/Loader';
 
 const TopPurchase = () => {
     const [topPurchase,setTopPurchase] = useState([]);
@@ -19,6 +20,9 @@ const TopPurchase = () => {
             <div>
                 <h2 className='text-4xl pt-6 font-bold'>Our Top Selling Food</h2>
             </div>
+            {
+                topPurchase.length==0&&<Loader></Loader>
+            }
             <div className='grid grid-cols-1 py-4 md:gap-8 gap-4 px-2 md:px-4 md:grid-cols-4 lg:grid-cols-5 '>
                 {
                     topPurchase.map(food => <FoodCard key={food._id} food={food}></FoodCard>)
