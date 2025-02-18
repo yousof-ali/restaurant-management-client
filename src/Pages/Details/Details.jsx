@@ -124,16 +124,16 @@ const Details = () => {
 
     return (
         <div className='font-signika'>
-            <div className='md:h-[30vh] h-[20vh] relative'>
-                <img className='h-full w-full' src='/details.jpg' alt="" />
-                <div className='bg-black opacity-40 w-full top-0 h-full absolute'>
+            <div className='md:h-[30vh] rounded-xl  h-[20vh] relative'>
+                <img className='h-full rounded-xl w-full' src='/details.jpg' alt="" />
+                <div className='bg-black rounded-xl opacity-40 w-full top-0 h-full absolute'>
 
                 </div>
-                <div className='absolute flex justify-center items-center top-0 w-full h-full'>
+                <div className='absolute rounded-2xl flex justify-center items-center top-0 w-full h-full'>
                     <h2 className='md:text-4xl text-3xl font-bold  text-white  '>Food Details</h2>
                 </div>
             </div>
-            <div className='md:flex mx-4  md:gap-4 lg:gap-8 my-6  '>
+            <div className='md:flex mx-4 lg:mx-0  md:gap-4 lg:gap-8 my-6  '>
                 <div className='md:w-1/2  max-h-[500px]'>
                     <img className='w-full rounded-2xl h-full' src={image} alt="" />
                 </div>
@@ -224,7 +224,7 @@ const Details = () => {
                         </div>
                     </div>
                 </div>
-                <div className='md:ml-6 flex-1 md:pt-0 pt-6'>
+                <div className='flex-1 md:pt-0 pt-6'>
                     <h2 className='text-3xl font-bold mb-4'>Related Product</h2>
                     <div className='grid grid-cols-3 gap-4 md:grid-cols-3 lg:grid-cols-4'>
                         {

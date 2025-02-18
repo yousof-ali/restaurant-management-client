@@ -1,0 +1,53 @@
+[
+    {
+      "category": "Pizza",
+      "image": "https://i.ibb.co.com/s9mLfz6Y/p1.jpg",
+      "id": "cat001"
+    },
+    {
+      "category": "Sushi",
+      "image": "https://i.ibb.co.com/cKjxGFsg/p2.jpg",
+      "id": "cat002"
+    },
+    {
+      "category": "Rice Dish",
+      "image": "https://i.ibb.co.com/jktJ4wPn/p3.jpg",
+      "id": "cat003"
+    },
+    {
+      "category": "Tacos",
+      "image": "https://i.ibb.co.com/jPJW11cR/p4.webp",
+      "id": "cat004"
+    },
+    {
+      "category": "Pastry",
+      "image": "https://i.ibb.co.com/5XDKRnpL/p5.jpg",
+      "id": "cat005"
+    },
+    {
+      "category": "Burger",
+      "image": "https://i.ibb.co.com/Y4wyfrV4/p6.webp",
+      "id": "cat006"
+    },
+    {
+      "category": "Fries",
+      "image": "https://i.ibb.co.com/8gg8F5MC/p7.jpg",
+      "id": "cat007"
+    },
+    {
+      "category": "Pasta",
+      "image": "https://i.ibb.co.com/CpjX3PvX/p8.webp",
+      "id": "cat008"
+    },
+    {
+      "category": "Noodles",
+      "image": "https://i.ibb.co.com/HTpCc3GY/p9.jpg",
+      "id": "cat009"
+    },
+    {
+      "category": "Dessert",
+      "image": "https://i.ibb.co.com/G3n9Kcw0/p10.jpg",
+      "id": "cat010"
+    }
+  ]
+  
