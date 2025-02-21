@@ -3,6 +3,8 @@ import { Link, NavLink } from 'react-router-dom';
 import './Header.css'
 import CommonButton from '../../../Components/CommonButton';
 import useAuth from '../../../Hook/useAuth';
+import { BsThreeDotsVertical } from "react-icons/bs";
+
 
 const Header = () => {
     const { user, logOutUser } = useAuth();
@@ -57,14 +59,16 @@ const Header = () => {
                 <div className="navbar-end">
                     {user ? (
                         <div className="flex md:gap-4 gap-1 items-center">
+                            <img
+
+                                title={user?.displayName}
+                                className="w-8 h-8 rounded-full border border-green-500 bg-amber-200 cursor-pointer focus:outline-none"
+                                src={user?.photoURL}
+                                alt={user?.displayName || "User Avatar"}
+                            />
+                            
                             <div className="dropdown dropdown-bottom dropdown-end relative">
-                                <img
-                                    tabIndex={0}
-                                    title={user?.displayName}
-                                    className="w-8 h-8 rounded-full bg-amber-200 cursor-pointer focus:outline-none"
-                                    src={user?.photoURL}
-                                    alt={user?.displayName || "User Avatar"}
-                                />
+                                <button tabIndex={0} className='btn text-xl btn-circle btn-ghost'><BsThreeDotsVertical /></button>
                                 <ul
                                     tabIndex={0}
                                     className="dropdown-content menu bg-base-100 rounded-box z-[1] w-48 p-2 shadow right-0"
@@ -78,11 +82,10 @@ const Header = () => {
                                     <li className="hover:border rounded-md">
                                         <Link to="/my-orders">My Orders</Link>
                                     </li>
+                                    <CommonButton className={'mt-2'} text="Sign Out " onClick={handleLogOut} />
                                 </ul>
                             </div>
 
-                            {/* Sign Out Button */}
-                            <CommonButton text="Sign Out" onClick={handleLogOut} />
                         </div>
                     ) : (
                         <Link to="/sign-in">

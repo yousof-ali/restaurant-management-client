@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import useAuth from '../../Hook/useAuth';
 import CommonButton from '../../Components/CommonButton'
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const AddFood = () => {
     const { user } = useAuth();
@@ -13,6 +14,7 @@ const AddFood = () => {
     const [description, setDescription] = useState('')
     const [chef_special, setChef_special] = useState('')
     const [ingredients, setIngredients] = useState('');
+    const navigate = useNavigate()
     const handleCategory = (e) => {
         setCategory(e.target.value)
 
@@ -69,12 +71,12 @@ const AddFood = () => {
                     Swal.fire({
                         position: "center",
                         icon: "success",
-                        title: "Your work has been saved",
+                        title: "New food added successfully!",
                         showConfirmButton: false,
                         timer: 1500
                       });
-
                       form.reset();
+                      navigate('/my-food');
 
                 }
             })

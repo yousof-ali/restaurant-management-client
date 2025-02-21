@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useAuth from '../../Hook/useAuth';
 import CommonButton from '../../Components/CommonButton';
+import Swal from 'sweetalert2';
 
 const UpdateFood = () => {
     const { id } = useParams()
@@ -12,13 +13,12 @@ const UpdateFood = () => {
     const [cookinTime, setCookingTime] = useState('')
     const [description, setDescription] = useState('')
     const [ingredients, setIngredients] = useState('');
+    const navigate=useNavigate();
     const handleCategory = (e) => {
         setCategory(e.target.value)
 
     }
-    const handleChef = (e) => {
-        setChef(e.target.value);
-    }
+
     const handleOrigin = (e) => {
         setOrigin(e.target.value);
 
@@ -31,10 +31,6 @@ const UpdateFood = () => {
         setDescription(e.target.value);
 
     }
-    const handleChefComment = (e) => {
-        setChef_special(e.target.value);
-
-    };
     const handleIngredients = (e) => {
         setIngredients(e.target.value);
     }
@@ -44,8 +40,7 @@ const UpdateFood = () => {
             .then(res => res.json())
             .then(result => {
                 setData(result);
-                console.log(result);
-                setIngredients(result.ingredients ? result.ingredients.join("\n") : ""); 
+                setIngredients(result.ingredients ? result.ingredients.join("\n") : "");
                 setCategory(result.category || "");
                 setOrigin(result.origin || "");
                 setCookingTime(result.cooking_time ? result.cooking_time.replace(" minutes", "") : "");
@@ -63,8 +58,28 @@ const UpdateFood = () => {
         const price = parseInt(form.price.value);
         const cooking_time = `${cookinTime} minutes`
 
-        const updatedData ={name, image, quantity, price, category, cooking_time, origin, description, ingredients: ingredients.split("\n").map(item => item.trim()).filter(Boolean) }
-        console.log(updatedData)
+        const updatedData = { name, image, quantity, price, category, cooking_time, origin, description, ingredients: ingredients.split("\n").map(item => item.trim()).filter(Boolean) }
+
+        fetch(`http://localhost:5000/update-food/${id}`, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedData)
+        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.matchedCount > 0) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Food updated successfully!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    navigate('/my-food')
+                }
+            })
     }
 
     return (
@@ -102,11 +117,11 @@ const UpdateFood = () => {
 
                             <select
                                 onChange={handleCategory}
-                                defaultValue={data.category}  
+                                defaultValue={data.category}
                                 className="p-2 border-0 border-b-2 w-full focus:border-green-500 outline-0"
                                 required
                             >
-                                 <option disabled selected value="">
+                                <option disabled selected value="">
                                     {data.category}
                                 </option>
                                 <option value="Pizza">Pizza</option>
@@ -244,9 +259,9 @@ const UpdateFood = () => {
                         </div>
 
                     </div>
-                    
+
                     <div className="form-control flex justify-center mt-8">
-                        <CommonButton text={"Add Food"}></CommonButton>
+                        <CommonButton text={"Update"}></CommonButton>
                     </div>
                 </form>
             </div>

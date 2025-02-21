@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../../Hook/useAuth';
 import { MdOutlineEdit } from "react-icons/md";
 import { Link } from 'react-router-dom';
+import PrimaryButton from '../../Components/CommonButton'
+import CommonButton from '../../Components/CommonButton';
+import { GoEye } from "react-icons/go";
+
 
 
 const MyFood = () => {
@@ -16,18 +20,14 @@ const MyFood = () => {
             })
     }, [])
     return (
-        <div>
+        <div className='font-signika'>
 
-            {
-                myfood.length === 0 && <div>
-                    <h2>You Have no Food</h2>
-                </div>
-            }
+           
 
             <div className='overflow-x-auto'>
                 <table className='table'>
-                    <thead>
-                        <tr>
+                    <thead className='bg-gray-800'>
+                        <tr className='text-white'>
                             <th>No</th>
                             <th>image</th>
                             <th>Food Name</th>
@@ -37,8 +37,9 @@ const MyFood = () => {
                         </tr>
                     </thead>
                     <tbody>
+                        
                         {
-                            myfood.map((single, indx) => <tr className='hover:shadow-2xl'>
+                            myfood.map((single, indx) => <tr key={indx} className='hover:shadow-2xl'>
                                 <td>
                                     {indx + 1}
                                 </td>
@@ -59,6 +60,11 @@ const MyFood = () => {
                                     {single.price}
                                 </th>
                                 <th>
+                                    <Link  className='mr-3' to={`/details/${single._id}`}>
+                                    <button className=' text-white  btn btn-secondary'>
+                                    <GoEye />
+ <span>View</span>
+                                    </button></Link>
                                     <Link to={`/update/${single._id}`}>
                                     <button className=' text-white  btn btn-accent'>
                                     <MdOutlineEdit /> <span>Update</span>
@@ -67,9 +73,20 @@ const MyFood = () => {
                             </tr>)
                         }
                     </tbody>
+                    
                 </table>
 
             </div>
+            {
+
+                myfood.length===0&&<div className='flex items-center space-y-2 md:mt-24 mt-12 flex-col'>
+                    <h2 className='text-center text-xl font-bold'>You have no Food.</h2>
+                    <p className='text-gray-500'>Do you want to add food?</p>
+                    <span>
+                    <Link to={'/add-food'}><CommonButton  text={'Add Now'}></CommonButton></Link>
+                    </span>
+                </div>
+            }
 
         </div>
     );
