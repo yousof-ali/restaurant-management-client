@@ -1,7 +1,7 @@
 
 import { button } from 'motion/react-client';
 import React, { useEffect, useId, useState } from 'react';
-import { Link, useLoaderData, useParams } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import { TbCurrencyTaka } from "react-icons/tb";
 import CommonButton from '../../Components/CommonButton';
 import { FaPlus } from "react-icons/fa6";
@@ -21,6 +21,7 @@ const Details = () => {
     const[related,setRelated] = useState([]);
     const { user } = useAuth();
     const currentTime = new Date();
+    const navigate = useNavigate()
     const shortMonthNames = [
         'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
         'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
@@ -112,6 +113,7 @@ const Details = () => {
                                     icon: "success",
                                     draggable: true
                                 });
+                                navigate('/my-orders')
                             }
                         })
                 }

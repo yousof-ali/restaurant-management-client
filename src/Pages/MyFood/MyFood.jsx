@@ -2,23 +2,26 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../../Hook/useAuth';
 import { MdOutlineEdit } from "react-icons/md";
 import { Link } from 'react-router-dom';
-import PrimaryButton from '../../Components/CommonButton'
 import CommonButton from '../../Components/CommonButton';
 import { GoEye } from "react-icons/go";
+import Loader from '../../Components/Loader';
 
 
 
 const MyFood = () => {
     const [myfood, setMyfood] = useState([])
+    const [loader,setLoader] = useState(false);
     const { user } = useAuth()
     useEffect(() => {
+        setLoader(true);
         fetch(`http://localhost:5000/my-food?email=${user?.email}`)
             .then(res => res.json())
             .then(result => {
                 setMyfood(result);
+                setLoader(false)
                 console.log(result)
             })
-    }, [])
+    }, [user.email])
     return (
         <div className='font-signika'>
 
@@ -86,6 +89,10 @@ const MyFood = () => {
                     <Link to={'/add-food'}><CommonButton  text={'Add Now'}></CommonButton></Link>
                     </span>
                 </div>
+            }
+
+            {
+                loader&&<Loader></Loader>
             }
 
         </div>
