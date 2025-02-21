@@ -10,6 +10,7 @@ const Header = () => {
         <li>< NavLink to={'/'}>Home</NavLink></li>
         <li>< NavLink to={'/all-food'}>All Food</NavLink></li>
         <li>< NavLink to={'/gallery'}>Gallery</NavLink></li>
+        <li>< NavLink to={'/blog'}>Blog</NavLink></li>
         {
             user ? <li>< NavLink to={'/my-food'}>My Food</NavLink></li>
                 : <li>< NavLink to={'/sign-up'}>Sign Up</NavLink></li>

@@ -1,0 +1,72 @@
+[
+    {
+      "chef_id": "chef001",
+      "name": "Luca Bellini",
+      "specialty": "Italian Cuisine",
+      "experience": "15 years",
+      "restaurant": "La Bella Vita",
+      "signature_dish": "Margherita Pizza",
+      "chef_country": "Italy",
+      "chef_image": "https://via.placeholder.com/150?text=Luca+Bellini"
+    },
+    {
+      "chef_id": "chef002",
+      "name": "Hiroshi Tanaka",
+      "specialty": "Japanese Sushi",
+      "experience": "20 years",
+      "restaurant": "Sakura Sushi Bar",
+      "signature_dish": "Sushi Platter",
+      "chef_country": "Japan",
+      "chef_image": "https://via.placeholder.com/150?text=Hiroshi+Tanaka"
+    },
+    {
+      "chef_id": "chef003",
+      "name": "Arun Sharma",
+      "specialty": "Indian Cuisine",
+      "experience": "18 years",
+      "restaurant": "Spice Symphony",
+      "signature_dish": "Chicken Biryani",
+      "chef_country": "India",
+      "chef_image": "https://via.placeholder.com/150?text=Arun+Sharma"
+    },
+    {
+      "chef_id": "chef004",
+      "name": "Diego Rivera",
+      "specialty": "Mexican Tacos",
+      "experience": "12 years",
+      "restaurant": "El Ranchito",
+      "signature_dish": "Tacos al Pastor",
+      "chef_country": "Mexico",
+      "chef_image": "https://via.placeholder.com/150?text=Diego+Rivera"
+    },
+    {
+      "chef_id": "chef005",
+      "name": "Claire Dubois",
+      "specialty": "French Pastry",
+      "experience": "22 years",
+      "restaurant": "Pâtisserie Parisienne",
+      "signature_dish": "French Croissant",
+      "chef_country": "France",
+      "chef_image": "https://via.placeholder.com/150?text=Claire+Dubois"
+    },
+    {
+      "chef_id": "chef006",
+      "name": "Jake Thompson",
+      "specialty": "American Burgers",
+      "experience": "10 years",
+      "restaurant": "Burger House",
+      "signature_dish": "Cheeseburger",
+      "chef_country": "USA",
+      "chef_image": "https://via.placeholder.com/150?text=Jake+Thompson"
+    },
+    {
+      "chef_id": "chef007",
+      "name": "Sophie Laurent",
+      "specialty": "Belgian Fries",
+      "experience": "14 years",
+      "restaurant": "Frites & Co.",
+      "signature_dish": "French Fries",
+      "chef_country": "Belgium",
+      "chef_image": "https://via.placeholder.com/150?text=Sophie+Laurent"
+    }
+  ]

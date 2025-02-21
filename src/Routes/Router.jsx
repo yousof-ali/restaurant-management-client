@@ -12,6 +12,7 @@ import PrivateRouter from './PrivateRouter'
 import AllFood from '../Pages/AllFood/AllFood';
 import Details from '../Pages/Details/Details';
 import AddFood from '../Pages/AddFood/AddFood';
+import UpdateFood from '../Pages/UpdateFood/UpdateFood';
 
 const router = createBrowserRouter([
     {
@@ -46,6 +47,9 @@ const router = createBrowserRouter([
             {
                 path:"/add-food",
                 element:<PrivateRouter><AddFood></AddFood></PrivateRouter>
+            },{
+                path:"/update/:id",
+                element:<PrivateRouter><UpdateFood></UpdateFood></PrivateRouter>
             }
         ]
     }
