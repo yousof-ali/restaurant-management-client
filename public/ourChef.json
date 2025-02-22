@@ -7,7 +7,7 @@
       "restaurant": "La Bella Vita",
       "signature_dish": "Margherita Pizza",
       "chef_country": "Italy",
-      "chef_image": "https://via.placeholder.com/150?text=Luca+Bellini"
+      "chef_image": "https://i.ibb.co/whtPkNDr/c1.webp"
     },
     {
       "chef_id": "chef002",
@@ -17,7 +17,7 @@
       "restaurant": "Sakura Sushi Bar",
       "signature_dish": "Sushi Platter",
       "chef_country": "Japan",
-      "chef_image": "https://via.placeholder.com/150?text=Hiroshi+Tanaka"
+      "chef_image": "https://i.ibb.co/GvB38zTD/c2.webp"
     },
     {
       "chef_id": "chef003",
@@ -27,7 +27,7 @@
       "restaurant": "Spice Symphony",
       "signature_dish": "Chicken Biryani",
       "chef_country": "India",
-      "chef_image": "https://via.placeholder.com/150?text=Arun+Sharma"
+      "chef_image": "https://i.ibb.co/Q7dh5Msy/c3.webp"
     },
     {
       "chef_id": "chef004",
@@ -37,7 +37,7 @@
       "restaurant": "El Ranchito",
       "signature_dish": "Tacos al Pastor",
       "chef_country": "Mexico",
-      "chef_image": "https://via.placeholder.com/150?text=Diego+Rivera"
+      "chef_image": "https://i.ibb.co/JbZ3vn4/c4.jpg"
     },
     {
       "chef_id": "chef005",
@@ -47,7 +47,7 @@
       "restaurant": "Pâtisserie Parisienne",
       "signature_dish": "French Croissant",
       "chef_country": "France",
-      "chef_image": "https://via.placeholder.com/150?text=Claire+Dubois"
+      "chef_image": "https://i.ibb.co/Jjmp334w/c5.webp"
     },
     {
       "chef_id": "chef006",
@@ -57,7 +57,7 @@
       "restaurant": "Burger House",
       "signature_dish": "Cheeseburger",
       "chef_country": "USA",
-      "chef_image": "https://via.placeholder.com/150?text=Jake+Thompson"
+      "chef_image": "https://i.ibb.co/4gTcYjK3/c6.webp"
     },
     {
       "chef_id": "chef007",
@@ -67,6 +67,6 @@
       "restaurant": "Frites & Co.",
       "signature_dish": "French Fries",
       "chef_country": "Belgium",
-      "chef_image": "https://via.placeholder.com/150?text=Sophie+Laurent"
+      "chef_image": "https://i.ibb.co/ymcLVXCP/c7.webp"
     }
   ]

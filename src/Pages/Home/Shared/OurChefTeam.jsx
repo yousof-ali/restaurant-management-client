@@ -1,75 +1,88 @@
 import React, { useEffect, useState } from 'react';
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 const OurChefTeam = () => {
-    const[chef,setChef] = useState([]);
+  const [chefs, setChefs] = useState([]);
 
-    useEffect(() => {
-        fetch('/ourChef.json')
-        .then(res => res.json())
-        .then(result => {
-            setChef(result)
-        })
-    },[])
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: { slidesToShow: 2, slidesToScroll: 1, infinite: true, dots: true }
-          },
-          {
-            breakpoint: 600,
-            settings: { slidesToShow: 1, slidesToScroll: 1 }
-          }
-        ]
-      };
-    return (
-        <section className="bg-gray-100 py-16">
-      <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center">
-        {/* Left Section - Slider */}
-        <div className="w-full md:w-1/2 animate-fadeInLeft">
-          <h2 className="text-4xl font-bold text-gray-800 mb-8 text-center md:text-left">Our Chefs</h2>
-          <Slider {...settings}>
-            {chef.map(chef => (
-              <div key={chef.chef_id} className="px-3">
-                <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
-                  <img 
-                    src={chef.chef_image} 
-                    alt={chef.name} 
-                    className="w-full h-56 object-cover" 
-                  />
-                  <div className="p-6">
-                    <h3 className="text-2xl font-semibold text-gray-800">{chef.name}</h3>
-                    <p className="mt-2 text-gray-600"><span className="font-medium">Specialty:</span> {chef.specialty}</p>
-                    <p className="mt-1 text-gray-600"><span className="font-medium">Experience:</span> {chef.experience}</p>
-                    <p className="mt-1 text-gray-600"><span className="font-medium">Restaurant:</span> {chef.restaurant}</p>
-                    <p className="mt-1 text-gray-600"><span className="font-medium">Signature Dish:</span> {chef.signature_dish}</p>
-                    <p className="mt-1 text-gray-600"><span className="font-medium">Country:</span> {chef.chef_country}</p>
+  useEffect(() => {
+    fetch('/ourChef.json')
+      .then(res => res.json())
+      .then(result => {
+        setChefs(result);
+      });
+  }, []);
+
+  return (
+    <div className="my-10 overflow-hidden">
+      <div className="relative w-full min-h-[60vh] flex max-h-screen overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 bg-[url('/chefbanner.jpg')] bg-cover bg-center"></div>
+
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/50"></div>
+
+        {/* Swiper Positioned (Centered on Mobile, Left on Larger Screens) */}
+        <div className="relative w-full flex items-center justify-center md:justify-start px-4 md:px-10 z-10">
+          <div className="w-full md:w-1/2 bg-white/10 border border-white/20 backdrop-blur-md rounded-lg p-6 shadow-lg max-h-[85vh] overflow-y-auto">
+            <h2 className="text-center text-white text-2xl font-semibold mb-4">Meet Our Chefs</h2>
+
+            <Swiper
+              modules={[Navigation]}
+              navigation={true}
+              slidesPerView={1}
+              loop={true}
+              autoplay={{ delay: 3000 }}
+              className="w-full"
+            >
+              {chefs.map((single, index) => (
+                <SwiperSlide key={index} className="flex flex-col items-center text-white">
+                  <div className="bg-white/20 p-4 rounded-lg shadow-md">
+                    {/* Chef Image */}
+                    <img className="w-full max-h-[300px] rounded-lg object-cover shadow-md" src={single.chef_image} alt={single.name} />
+
+                    {/* Chef Details */}
+                    <div className="p-4">
+                      <p className="text-sm text-gray-300">#{single.chef_id}</p>
+                      <h3 className="text-xl font-semibold">{single.name}</h3>
+
+                      <div className="flex justify-between items-center mt-2">
+                        <span className="flex gap-2 items-center">
+                          <img src="/chef.png" className="w-8" alt="Specialty Icon" />
+                          <span className="text-sm">{single.specialty}</span>
+                        </span>
+                      </div>
+
+                      <p className="text-gray-300 text-sm">{single.experience} years of experience</p>
+
+                      <div className="flex items-center gap-2 mt-4">
+                        <img src="/resurent.png" className="w-6" alt="Restaurant Icon" />
+                        <p className="text-sm">{single.restaurant}</p>
+                      </div>
+                      <p className="text-xs  ml-10">{single.chef_country}</p>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
-          </Slider>
-        </div>
-
-        {/* Right Section - Static Image */}
-        <div className="w-full md:w-1/2 mt-8 md:mt-0 md:ml-8 animate-fadeInRight">
-          <img 
-            src="https://via.placeholder.com/600x400?text=Our+Chefs" 
-            alt="Our Chefs" 
-            className="w-full rounded-lg shadow-2xl object-cover" 
-          />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+          <div className='text-white hidden md:flex flex-col w-1/2 justify-center    mx-auto'>
+          <h2 className='md:text-4xl mb-6 text-center font-bold'>What Makes Our Chefs Unique?</h2>
+          <div className='ml-12 space-y-2'>
+            <p className='flex items-center'><img className='w-10' src="/awar.png" alt="" /><p>
+            <span className='text-lg font-bold text-green-500'> Award-Winning Talent </span> – Our chefs are globally recognized for their innovative cuisine.</p></p>
+            <p className='flex items-center'><img className='w-10' src="/expert.png" alt="" /><p>
+            <span className='text-lg font-bold text-green-500'>  Expertise & Passion  </span> – From traditional recipes to modern gastronomy, they create magic on every plate.</p></p>
+            <p className='flex items-center'><img className='w-10' src="/inge.png" alt="" /><p>
+            <span className='text-lg font-bold text-green-500'> Fresh & High-Quality Ingredients </span> – Sourced locally and globally for an authentic taste.</p></p>
+          </div>
+          </div>
         </div>
       </div>
-    </section>
-    );
+    </div>
+  );
 };
 
 export default OurChefTeam;
