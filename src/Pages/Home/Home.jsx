@@ -27,6 +27,7 @@ const Home = () => {
             <Slider />
             <Cate />
             <TopPurchase />
+            <div className='divider'></div>
             <OurServices></OurServices>
             <OurChefTeam></OurChefTeam>
             

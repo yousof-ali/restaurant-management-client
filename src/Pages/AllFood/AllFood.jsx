@@ -161,6 +161,7 @@ const AllFood = () => {
                 }
                 <button className='btn btn-neutral ml-2' onClick={handleNext} >Next</button>
             </div>
+            
         </div>
     );
 };

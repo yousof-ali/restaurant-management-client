@@ -32,7 +32,7 @@ const slidesData = [
         bgColor: 'bg-gradient-to-r from-green-800 via-green-600 to-green-700'
     },
     {
-        title: "Experience Gourmet Like Never Before",
+        title: "Experience Premium Pizza Like Never Before",
         description: "Join us for a culinary journey where taste meets elegance.Handcrafted Dishes Made .",
         image: "/s4.png",
         discound:'/f3.png',
@@ -53,7 +53,7 @@ const Slider = () => {
             >
                 {slidesData.map((slide, index) => (
                     <SwiperSlide key={index}>
-                        <div className={`${slide.bgColor} text-white flex flex-col md:flex-row px-4 py-8 md:px-12 lg:px-32 items-center justify-between gap-6`}>
+                        <div className={`${slide.bgColor} h-[50vh] text-white flex flex-col md:flex-row px-4 py-8 md:px-12 lg:px-32 items-center justify-between gap-6`}>
                             <div className='max-w-3xl space-y-4 text-center md:text-left'>
                                 <p className='text-xl lg:text-3xl'>The Food We Have <span className='text-yellow-400'>
                                     <Typewriter 
@@ -84,7 +84,7 @@ const Slider = () => {
                                     {slide.description}
                                 </p>
 
-                                <Link to="/all">
+                                <Link to="/all-food">
                                     <button className='mt-4 px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-full shadow-md transition-transform transform hover:scale-105'>
                                         {slide.cta}
                                     </button>

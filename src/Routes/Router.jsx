@@ -15,6 +15,7 @@ import AddFood from '../Pages/AddFood/AddFood';
 import UpdateFood from '../Pages/UpdateFood/UpdateFood';
 import MyOrder from '../Pages/MyOrder/MyOrder';
 import Gallery from '../Pages/Gallery/Gallery';
+import News from '../Pages/News/News';
 
 const router = createBrowserRouter([
     {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
             {
                 path:'/gallery',
                 element:<Gallery></Gallery>
+            },
+            {
+                path:'/news',
+                element:<News></News>
             }
         ]
     }

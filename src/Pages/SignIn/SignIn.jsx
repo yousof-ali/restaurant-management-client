@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Lottie from "lottie-react";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { FaRegEye } from "react-icons/fa6";
@@ -14,6 +14,7 @@ const SignIn = () => {
     const navigate = useNavigate();
     const [loading,setLoading] = useState(false);
     const emialRef = useRef(null);
+    const location = useLocation();
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -30,7 +31,7 @@ const SignIn = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                navigate('/')
+                navigate(location?.state ? location.state : "/");
 
             })
             .catch((err) => {
@@ -47,7 +48,7 @@ const SignIn = () => {
         googleLogin()
         .then(_ => {
               console.log(_.user)
-              navigate('/')
+              navigate(location?.state ? location.state : "/");
 
         })
         .catch((err) => {

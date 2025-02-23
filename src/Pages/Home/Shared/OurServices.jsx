@@ -1,4 +1,8 @@
 import React from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+AOS.init();
 
 const OurServices = () => {
     return (
@@ -62,6 +66,28 @@ const OurServices = () => {
                
             </div>
             
+            </div>
+            <div className='lg:mt-12 mt-8'>
+                <div  className='relative max-w-[800px]   mx-auto'>
+                    <img className='w-full rounded h-[400px]' src="/servicesback.jpg
+                    " alt="" />
+                    <div data-aos="fade-up"  data-aos-duration="1000" className='absolute rounded w-1/2 h-1/2 bg-green-500 p-4 top-0 left-0 lg:-left-1/4'>
+                    <h2 className='text-center text-xl font-bold text-white mb-4'>OPENING TIMES</h2>
+                    <p className='text-white flex justify-between text-sm'><span>MON</span><span>17.00 to 23:00</span></p>
+                    <p className='text-white text-sm my-2 flex justify-between'><span>WED</span><span>19.00 to 24:00</span></p>
+                    <p className='text-white text-sm flex justify-between'><span>THU</span><span>14.00 to 18:00</span></p>
+                    <p className='text-white text-sm flex justify-between'><span>SAT</span><span>14.00 to 18:00</span></p>
+
+                    </div>
+                    <div   data-aos="fade-up" data-aos-duration="1000" className='absolute p-4 rounded w-1/2 h-1/2 bg-red-500 bottom-0 right-0 lg:-right-1/4'>
+                    <h2 className='text-center text-xl mt-4 font-bold text-white mb-4'>FIND US HERE</h2>
+                    <div className='text-center'>
+                    <p className='text-sm text-white'>Avenue Marina 34568 NY (U.S)</p>
+                    <p className='text-sm text-white'>+1 374 474 637</p>
+                    <p className='text-sm text-white'>info@restaurant.com</p>
+                    </div>
+                    </div>
+                </div>
             </div>
             
         </div>
