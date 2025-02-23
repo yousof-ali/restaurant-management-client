@@ -82,7 +82,7 @@ const MyFood = () => {
             </div>
             {
 
-                myfood.length===0&&<div className='flex items-center space-y-2 md:mt-24 mt-12 flex-col'>
+                myfood.length===0&& !loader&&<div className='flex items-center space-y-2 md:mt-24 mt-12 flex-col'>
                     <h2 className='text-center text-xl font-bold'>You have no Food.</h2>
                     <p className='text-gray-500'>Do you want to add food?</p>
                     <span>

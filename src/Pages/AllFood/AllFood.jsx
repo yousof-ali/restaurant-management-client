@@ -129,9 +129,11 @@ const AllFood = () => {
                 <div className='text-center font-bold text-gray-500 text-xl mt-4 my-2'><h2>Search for <span className='text-green-400'>{searchTerm}</span> Result</h2></div>
                 </>
             }
+             
               {
-                allfood.length==0 && !searchTerm&& <Loader></Loader>
+                allfood.length==0 && !searchTerm&& <div className='py-24'><Loader></Loader></div>
               }
+              
             {
                     allfood.length===0&& searchTerm&&<>
                     <div className='md:text-3xl max-h-[90vh]  text-3xl py-16 text-center font-black'>

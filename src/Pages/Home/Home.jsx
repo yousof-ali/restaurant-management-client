@@ -27,8 +27,9 @@ const Home = () => {
             <Slider />
             <Cate />
             <TopPurchase />
-            <OurChefTeam></OurChefTeam>
             <OurServices></OurServices>
+            <OurChefTeam></OurChefTeam>
+            
 
             <OurNews></OurNews>
             <div className="relative h-[20vh] w-full">
