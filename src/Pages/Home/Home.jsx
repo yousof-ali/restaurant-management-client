@@ -6,6 +6,8 @@ import TopPurchase from './Shared/TopPurchase';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import OurChefTeam from './Shared/OurChefTeam';
+import OurNews from './Shared/OurNews';
+import OurServices from './Shared/OurServices';
 
 AOS.init();
 
@@ -26,6 +28,9 @@ const Home = () => {
             <Cate />
             <TopPurchase />
             <OurChefTeam></OurChefTeam>
+            <OurServices></OurServices>
+
+            <OurNews></OurNews>
             <div className="relative h-[20vh] w-full">
                 <div className="absolute inset-0 bg-[url('/sbackground.jpg')] bg-cover bg-center"></div>
                 <div className="absolute inset-0 backdrop-blur-md"></div>
@@ -56,6 +61,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+            
         </div>
     );
 };

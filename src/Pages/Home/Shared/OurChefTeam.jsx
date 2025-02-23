@@ -18,15 +18,12 @@ const OurChefTeam = () => {
   return (
     <div className="my-10 overflow-hidden">
       <div className="relative w-full min-h-[60vh] flex max-h-screen overflow-hidden">
-        {/* Background Image */}
         <div className="absolute inset-0 bg-[url('/chefbanner.jpg')] bg-cover bg-center"></div>
 
-        {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/50"></div>
 
-        {/* Swiper Positioned (Centered on Mobile, Left on Larger Screens) */}
         <div className="relative w-full flex items-center justify-center md:justify-start px-4 md:px-10 z-10">
-          <div className="w-full md:w-1/2 bg-white/10 border border-white/20 backdrop-blur-md rounded-lg p-6 shadow-lg max-h-[85vh] overflow-y-auto">
+          <div className="w-full my-4 md:w-1/2 bg-white/10 border border-white/20 backdrop-blur-md rounded-lg p-6 shadow-lg max-h-[85vh] overflow-y-auto">
             <h2 className="text-center text-white text-2xl font-semibold mb-4">Meet Our Chefs</h2>
 
             <Swiper
@@ -39,11 +36,8 @@ const OurChefTeam = () => {
             >
               {chefs.map((single, index) => (
                 <SwiperSlide key={index} className="flex flex-col items-center text-white">
-                  <div className="bg-white/20 p-4 rounded-lg shadow-md">
-                    {/* Chef Image */}
+                  <div className="bg-white/20  mx-auto max-w-[500px] p-4 rounded-lg shadow-md">
                     <img className="w-full max-h-[300px] rounded-lg object-cover shadow-md" src={single.chef_image} alt={single.name} />
-
-                    {/* Chef Details */}
                     <div className="p-4">
                       <p className="text-sm text-gray-300">#{single.chef_id}</p>
                       <h3 className="text-xl font-semibold">{single.name}</h3>
@@ -73,10 +67,11 @@ const OurChefTeam = () => {
           <div className='ml-12 space-y-2'>
             <p className='flex items-center'><img className='w-10' src="/awar.png" alt="" /><p>
             <span className='text-lg font-bold text-green-500'> Award-Winning Talent </span> – Our chefs are globally recognized for their innovative cuisine.</p></p>
-            <p className='flex items-center'><img className='w-10' src="/expert.png" alt="" /><p>
-            <span className='text-lg font-bold text-green-500'>  Expertise & Passion  </span> – From traditional recipes to modern gastronomy, they create magic on every plate.</p></p>
+            
             <p className='flex items-center'><img className='w-10' src="/inge.png" alt="" /><p>
             <span className='text-lg font-bold text-green-500'> Fresh & High-Quality Ingredients </span> – Sourced locally and globally for an authentic taste.</p></p>
+            <p className='flex items-center'><img className='w-10' src="/expert.png" alt="" /><p>
+            <span className='text-lg font-bold text-green-500'>  Expertise & Passion  </span> – From traditional recipes to modern gastronomy, they create magic on every plate.</p></p>
           </div>
           </div>
         </div>
