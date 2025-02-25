@@ -1,6 +1,7 @@
 import React from 'react';
 import { LuInstagram } from "react-icons/lu";
 import AOS from 'aos';
+import { Helmet } from 'react-helmet-async';
 AOS.init()
 
 
@@ -49,7 +50,7 @@ const Gallery = () => {
                     <img data-aos-duration="2000" data-aos="zoom-in" className='w-full h-full object-cover rounded-r-2xl' src='/g4.jpg' alt='Gallery Image 4' />
                 </div>
                 <div className='col-span-2 cursor-pointer  '>
-                    <img  data-aos-duration="2000" data-aos="zoom-in" className='w-full h-full rounded-bl-2xl' src='/g3.jpg' alt='Gallery Image 3' />
+                    <img data-aos-duration="2000" data-aos="zoom-in" className='w-full h-full rounded-bl-2xl' src='/g3.jpg' alt='Gallery Image 3' />
                 </div>
 
             </div>

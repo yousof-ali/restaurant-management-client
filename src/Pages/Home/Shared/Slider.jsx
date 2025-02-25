@@ -70,7 +70,7 @@ const Slider = () => {
                                 <h2 
                                     data-aos='fade-up' 
                                     data-aos-duration="1000" 
-                                    className='text-4xl lg:text-6xl font-bold leading-tight'
+                                    className=' text-2xl md:text-4xl lg:text-6xl font-bold leading-tight'
                                 >
                                     {slide.title}
                                     <span className='text-orange-400'>{slide?.off}</span></h2>

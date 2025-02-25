@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import CommonButton from '../../Components/CommonButton'
-import PrimaryButton from '../../Components/PrimaryButton'
-import { CiSearch } from "react-icons/ci";
 import FoodCard from '../../Components/FoodCard';
 import Loader from '../../Components/Loader'
+
 
 
 const AllFood = () => {
@@ -35,7 +34,6 @@ const AllFood = () => {
                 console.log(err.message)
             })
     }, [currentPage, dataEachPage, forbtn, dataCount]);
-
     useEffect(() => {
         fetch(`http://localhost:5000/count?category=${forbtn}`)
             .then(res => res.json())
