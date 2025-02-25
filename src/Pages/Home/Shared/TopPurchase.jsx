@@ -16,6 +16,7 @@ const TopPurchase = () => {
         )
         .then(result => {
             setTopPurchase(result)
+            console.log(result);
         })
     },[])
     return (

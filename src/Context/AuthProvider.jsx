@@ -5,7 +5,7 @@ import { auth } from '../Firebase/firebaseConfig';
 export const AuthContext = createContext(null);
 const AuthProvider = ({children}) => {
     const [loader,setLoader] = useState(true);
-    const [user,setUser] = useState(null);
+    const [user,setUser] = useState();
     const googleProvider = new GoogleAuthProvider();
 
     const createUser = (email,password) => {
@@ -40,7 +40,6 @@ const AuthProvider = ({children}) => {
     },[]);
 
     const forgetPassword =(email) =>{
-        setLoader(true);
         return sendPasswordResetEmail(auth,email);
     };
 

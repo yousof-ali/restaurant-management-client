@@ -4,6 +4,7 @@ import './Header.css'
 import CommonButton from '../../../Components/CommonButton';
 import useAuth from '../../../Hook/useAuth';
 import { BsThreeDotsVertical } from "react-icons/bs";
+import Swal from 'sweetalert2';
 
 
 const Header = () => {
@@ -15,14 +16,30 @@ const Header = () => {
         <li>< NavLink to={'/news'}>News</NavLink></li>
         {
             user ? <li>< NavLink to={'/my-food'}>My Food</NavLink></li>
-            :<li>< NavLink to={'/sign-up'}>Sign Up</NavLink></li>
-                
+                : <li>< NavLink to={'/sign-up'}>Sign Up</NavLink></li>
+
         }
 
     </>
     const handleLogOut = () => {
-        console.log('klgjdlk')
-        logOutUser()
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Do you want to log out!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Log Out!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                logOutUser();
+                Swal.fire({
+                    title: "Log Out",
+                    text: "log out successfully!.",
+                    icon: "success"
+                });
+            }
+        });   
     }
     console.log(user)
     return (
@@ -67,7 +84,7 @@ const Header = () => {
                                 src={user?.photoURL}
                                 alt={user?.displayName || "User Avatar"}
                             />
-                            
+
                             <div className="dropdown dropdown-bottom dropdown-end relative">
                                 <button tabIndex={0} className='btn text-xl btn-circle btn-ghost'><BsThreeDotsVertical /></button>
                                 <ul

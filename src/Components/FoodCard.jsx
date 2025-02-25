@@ -10,19 +10,41 @@ import { getLocalStorage, removeLocalStorage, setLocalStorage } from '../utilite
 
 const FoodCard = ({ food, search }) => {
     const { _id, name, image, quantity, price, description } = food;
-    const { user,loader } = useAuth()
+    const { user, loader } = useAuth()
 
-    const [favorite, setFavorite] = useState(false);
+    const [favorite, setFavorite] = useState("");
+
+
 
     useEffect(() => {
-        
+        const fetchFavorites = async () => {
+            if (!user) {
+                const localFavs = getLocalStorage();
+                const filter = localFavs.find(single => single ==_id);
+                setFavorite(filter);
+                
+            } else {
+                try {
+                    const response = await fetch(`http://localhost:5000/get-favorite?email=${user?.email}`);
+                    const result = await response.json();
+                    const filter = result.find(single => single.food_id == _id);
+                    setFavorite(filter)
+                    
+                } catch (error) {
+                    console.error("Error fetching favorites:", error);
+                }
+            }
+        };
 
-    }, [user?.email, _id])
+        fetchFavorites();
+
+    }, [user]);
+
 
     const handleFavoite = (id) => {
         if (!user) {
             setLocalStorage(id);
-            setFavorite(true)
+            setFavorite(id);
             return;
         }
 
@@ -35,7 +57,9 @@ const FoodCard = ({ food, search }) => {
         })
             .then(res => res.json())
             .then(result => {
-                console.log(result);
+                if (result.insertedId) {
+                    setFavorite(id);;
+                }
             })
 
 
@@ -43,9 +67,21 @@ const FoodCard = ({ food, search }) => {
     const handlefavremove = (id) => {
         if (!user) {
             removeLocalStorage(id);
-            setFavorite(false);
+            setFavorite('');
             return;
         }
+
+        fetch(`http://localhost:5000/delete-fav/${id}`,{
+            method:"DELETE"
+        })
+        .then(res => res.json())
+        .then(result => {
+            console.log(result);
+            if(result.deletedCount>0){
+                setFavorite('');
+            }
+            
+        })
 
     }
 
