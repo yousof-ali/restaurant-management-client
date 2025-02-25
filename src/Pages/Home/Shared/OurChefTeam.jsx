@@ -16,7 +16,7 @@ const OurChefTeam = () => {
   }, []);
 
   return (
-    <div className="my-10 overflow-hidden">
+    <div className="my-10 md:my-14 rounded-xl overflow-hidden">
       <div className="relative w-full min-h-[60vh] flex max-h-screen overflow-hidden">
         <div className="absolute inset-0 bg-[url('/chefbanner.jpg')] bg-cover bg-center"></div>
 

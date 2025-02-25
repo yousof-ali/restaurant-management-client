@@ -3,6 +3,7 @@ import useAuth from '../../Hook/useAuth';
 import { MdOutlineEdit } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import CommonButton from '../../Components/CommonButton';
+import UpdateButton from '../../Components/UpdateButton'
 import { GoEye } from "react-icons/go";
 import Loader from '../../Components/Loader';
 
@@ -64,14 +65,11 @@ const MyFood = () => {
                                 </th>
                                 <th>
                                     <Link  className='mr-3' to={`/details/${single._id}`}>
-                                    <button className=' text-white  btn btn-secondary'>
-                                    <GoEye />
- <span>View</span>
-                                    </button></Link>
+                                    <CommonButton text={"View"} icon={<GoEye />} className=''>
+                                    </CommonButton></Link>
                                     <Link to={`/update/${single._id}`}>
-                                    <button className=' text-white  btn btn-accent'>
-                                    <MdOutlineEdit /> <span>Update</span>
-                                    </button></Link>
+                                    <UpdateButton></UpdateButton>
+                                    </Link>
                                 </th>
                             </tr>)
                         }

@@ -26,7 +26,10 @@ const FoodCard = ({ food,search }) => {
             <div className="p-4 lg:p-6">
                 <h2 className={`card-title ${search&&'text-green-500'}`}>{name}</h2>
                 <p className='text-sm text-gray-500'>{description.length > 70 ? `${description.slice(0, 70)}...` : description}</p>
-                <p className='text-gray-700 text-sm my-2'>In Stock : <span className='text-black'>{quantity}</span> Pices</p>
+                {
+                    quantity>0?<p className='text-gray-700 text-sm my-2'>In Stock : <span className='text-black'>{quantity}</span> Pices</p>:<p className='text-sm mt-4 text-red-500 font-bold'>Stock Out</p>
+                }
+                
                 <p className='text-gray-700 mt-4'><span className='text-black'>{price}</span> Taka</p>
 
                 <div className="card-actions justify-end">

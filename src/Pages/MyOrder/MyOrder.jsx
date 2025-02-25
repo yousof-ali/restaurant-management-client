@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../../Hook/useAuth';
 import { Link } from 'react-router-dom';
 import CommonButton from '../../Components/CommonButton';
+import DeleteButton  from '../../Components/DeleteButton'
 import { MdOutlineEdit } from "react-icons/md";
 import { GoEye } from "react-icons/go";
 import Swal from 'sweetalert2';
@@ -110,14 +111,11 @@ const MyOrder = () => {
 
                                 <th>
                                     <Link className='mr-3' to={`/details/${single?.product_ID}`}>
-                                        <button className=' text-white  btn btn-accent'>
-                                            <GoEye />
-                                            <span>View</span>
-                                        </button></Link>
-                                    <Link to={``}>
-                                        <button onClick={() => handleDelete(single?._id)} className=' text-white  btn btn-error'>
-                                            <MdOutlineEdit /> <span>Delete</span>
-                                        </button></Link>
+                                        <CommonButton icon={<GoEye />} text={"View"}>
+                                        </CommonButton></Link>
+                                        <DeleteButton onClick={() => handleDelete(single?._id)}>
+                                            
+                                        </DeleteButton>
                                 </th>
                             </tr>)
                         }

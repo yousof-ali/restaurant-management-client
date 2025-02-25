@@ -4,6 +4,9 @@ import CommonButton from '../../../Components/CommonButton';
 import PrimaryButton from "../../../Components/PrimaryButton"
 import { Link } from 'react-router-dom';
 import Loader from '../../../Components/Loader';
+import { FiArrowUpRight } from "react-icons/fi";
+
+
 
 const TopPurchase = () => {
     const [topPurchase,setTopPurchase] = useState([]);
@@ -16,9 +19,9 @@ const TopPurchase = () => {
         })
     },[])
     return (
-        <div>
+        <div className='md:my-10 '>
             <div>
-                <h2 className='text-3xl pt-6 font-bold'>Our Top Selling Food</h2>
+                <h2 className='text-3xl md:ml-2 py-6 font-bold'>Our Top Selling Food</h2>
             </div>
           
             {
@@ -31,7 +34,7 @@ const TopPurchase = () => {
                 }
             </div>
             <div className='flex justify-center my-8'>
-            <Link to={'/all-food'}><PrimaryButton text={"All Food"}></PrimaryButton></Link>
+            <Link to={'/all-food'}><PrimaryButton icon={<FiArrowUpRight />} text={"All Food"}></PrimaryButton></Link>
             </div>
         </div>
     );

@@ -44,7 +44,7 @@ const slidesData = [
 
 const Slider = () => {
     return (
-        <div className='border bg- font-signika'>
+        <div className=' bg- font-signika'>
             <Swiper
                 modules={[Navigation, Autoplay, Pagination, Scrollbar, A11y]}
                 slidesPerView={1}
@@ -53,7 +53,7 @@ const Slider = () => {
             >
                 {slidesData.map((slide, index) => (
                     <SwiperSlide key={index}>
-                        <div className={`${slide.bgColor} h-[50vh] text-white flex flex-col md:flex-row px-4 py-8 md:px-12 lg:px-32 items-center justify-between gap-6`}>
+                        <div className={`${slide.bgColor} h-[50vh] rounded-t-2xl text-white flex flex-col md:flex-row px-4 py-8 md:px-12 lg:px-32 items-center justify-between gap-6`}>
                             <div className='max-w-3xl space-y-4 text-center md:text-left'>
                                 <p className='text-xl lg:text-3xl'>The Food We Have <span className='text-yellow-400'>
                                     <Typewriter 

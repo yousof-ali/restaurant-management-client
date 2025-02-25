@@ -26,6 +26,17 @@ const Details = () => {
         'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
         'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
     ];
+    const [chef,setChef] = useState({});
+
+    useEffect (() => {
+        fetch('/ourChef.json')
+        .then(res => res.json())
+        .then(result => {
+            console.log(result);
+            const singleChef = result.find(single => single.chef_id === data.chef_id)
+            setChef(singleChef);
+        })
+    },[data])
 
     useEffect(() => {
         fetch(`http://localhost:5000/single-food/${id}`)
@@ -166,7 +177,9 @@ const Details = () => {
                         </ul>
 
 
-                        <p className=' font-bold   my-4'>Stock In : <span className='text-gray-500'>{quantity} Pices</span> </p>
+                        {
+                            quantity>0?<p className=' font-bold   my-4'>Stock In : <span className='text-gray-500'>{quantity} Pices</span> </p>:<p className='my-4 font-bold text-red-400'>Stock Out</p>
+                        }
                         <p className='flex text-xl  items-center'>
                             <TbCurrencyTaka />
                             <span className='text-3xl font-bold'>{price}</span>
@@ -193,10 +206,8 @@ const Details = () => {
                                 <p>Buyer Email : <span className='text-gray-500'>{user?.email}</span></p>
                                 <p>Date of Order : <span className='text-gray-500'>{currentTime.getDate()} {shortMonthNames[currentTime.getMonth()]}</span><span className='ml-3 text-gray-500'>{currentTime.getHours()} : {currentTime.getMinutes()}</span></p>
                                 <div className="modal-action">
-                                    <form method="dialog flex ">
 
-                                        <button className="btn">Close</button>
-                                    </form>
+                                        <button onClick={()=> document.getElementById('my_modal_5').close()} className="btn">Close</button>
                                     <CommonButton onClick={handlePurchase} text={"Confirm"}></CommonButton>
                                 </div>
                             </div>
@@ -219,9 +230,9 @@ const Details = () => {
                         <img className='inline mt-2' src="/qutes2.png" alt="" />
                     </div>
                     <div className='flex gap-2 mr-4 justify-end mt-4 '>
-                        <img className='rounded-full border' src="/" alt="chef" />
+                        <img className=' w-12 h-12 rounded-full border' src={chef?.chef_image} alt="chef" />
                         <div>
-                            <h2 className=' font-bold'>{chef_name}</h2>
+                            <h2 className=' font-bold'>{chef?.name}</h2>
                             <p className='text-gray-500'>#{chef_id}</p>
                         </div>
                     </div>

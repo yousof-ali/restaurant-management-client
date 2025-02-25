@@ -1,5 +1,7 @@
 import React from 'react';
 import { LuInstagram } from "react-icons/lu";
+import AOS from 'aos';
+AOS.init()
 
 
 const Gallery = () => {
@@ -21,40 +23,41 @@ const Gallery = () => {
                     </a>
                 </div>
                 <div className='grid grid-cols-1 md:w-3/5 justify-center items-center md:grid-cols-3 lg:gap-8 gap-4 text-center'>
-                     <div className=''>
+                    <div className=''>
                         <h2 className='text-3xl font-bold'>1976</h2>
                         <p className='text-sm font-light'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut diam etni</p>
-                     </div>
-                     <div>
+                    </div>
+                    <div>
                         <h2 className='text-3xl font-bold'>50K</h2>
                         <p className='text-sm font-light'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut diam etni</p>
-                     </div>
-                     <div>
+                    </div>
+                    <div>
                         <h2 className='text-3xl font-bold'>29+</h2>
                         <p className='text-sm font-light'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut diam etni</p>
-                     </div>
+                    </div>
                 </div>
             </div>
             <div className='divider'></div>
             <div className='grid   grid-cols-3 md:my-8 max-w-[1300px] mx-auto md:gap-4  gap-1 '>
                 <div className='cursor-pointer '>
-                    <img className='w-full h-full' src='/g1.jpg' alt='Gallery Image 1' />
+                    <img data-aos-duration="1000" data-aos="zoom-in" className='rounded-tl-2xl w-full h-full' src='/g1.jpg' alt='Gallery Image 1' />
                 </div>
                 <div className=' cursor-pointer '>
-                    <img className='w-full h-full' src='/g2.jpg' alt='Gallery Image 2' />
+                    <img data-aos-duration="1000" data-aos="zoom-in" className='w-full h-full' src='/g2.jpg' alt='Gallery Image 2' />
                 </div>
                 <div className=' cursor-pointer row-span-2'>
-                    <img className='w-full h-full object-cover' src='/g4.jpg' alt='Gallery Image 4' />
+                    <img data-aos-duration="2000" data-aos="zoom-in" className='w-full h-full object-cover rounded-r-2xl' src='/g4.jpg' alt='Gallery Image 4' />
                 </div>
                 <div className='col-span-2 cursor-pointer  '>
-                    <img className='w-full h-full' src='/g3.jpg' alt='Gallery Image 3' />
+                    <img  data-aos-duration="2000" data-aos="zoom-in" className='w-full h-full rounded-bl-2xl' src='/g3.jpg' alt='Gallery Image 3' />
                 </div>
 
             </div>
             <h2 className='text-3xl text-center'>Our Instagram Post </h2>
-            <div className='mt-4 max-w-[1300px] gap-1 mx-auto grid grid-cols-5'>
+            <div className='my-4 max-w-[1300px] gap-1 mx-auto grid grid-cols-5'>
                 <div className='cursor-pointer group relative'>
-                    <img className='h-full' src="/g5.jpg" alt="" />
+                    <img data-aos-duration="1000" data-aos="fade-up"
+                        className='h-full' src="/g5.jpg" alt="" />
                     <div className="absolute  inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-20 transition-opacity duration-800"></div>
                     <div className="absolute top-0 text-white flex justify-center h-full items-center w-full  text-3xl    opacity-0 group-hover:opacity-100 transition-opacity duration-800">
                         <LuInstagram />
@@ -62,7 +65,8 @@ const Gallery = () => {
                     </div>
                 </div>
                 <div className='cursor-pointer group relative'>
-                    <img className='h-full' src="/g6.jpg" alt="" />
+                    <img data-aos="fade-up"
+                        data-aos-duration="2000" data-aos-delay="200" className='h-full' src="/g6.jpg" alt="" />
                     <div className="absolute  inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-20 transition-opacity duration-800"></div>
                     <div className="absolute top-0 text-white flex justify-center h-full items-center w-full  text-3xl    opacity-0 group-hover:opacity-100 transition-opacity duration-800">
                         <LuInstagram />
@@ -70,7 +74,8 @@ const Gallery = () => {
                     </div>
                 </div>
                 <div className='cursor-pointer group relative'>
-                    <img className='h-full' src="/g7.jpg" alt="" />
+                    <img data-aos="fade-up"
+                        data-aos-duration="2000" data-aos-delay="300" className='h-full' src="/g7.jpg" alt="" />
                     <div className="absolute  inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-20 transition-opacity duration-800"></div>
                     <div className="absolute top-0 text-white flex justify-center h-full items-center w-full  text-3xl    opacity-0 group-hover:opacity-100 transition-opacity duration-800">
                         <LuInstagram />
@@ -78,7 +83,8 @@ const Gallery = () => {
                     </div>
                 </div>
                 <div className='cursor-pointer group relative'>
-                    <img className='h-full' src="/g8.jpg" alt="" />
+                    <img data-aos="fade-up"
+                        data-aos-duration="2000" data-aos-delay="400" className='h-full' src="/g8.jpg" alt="" />
                     <div className="absolute  inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-20 transition-opacity duration-800"></div>
                     <div className="absolute top-0 text-white flex justify-center h-full items-center w-full  text-3xl    opacity-0 group-hover:opacity-100 transition-opacity duration-800">
                         <LuInstagram />
@@ -86,7 +92,8 @@ const Gallery = () => {
                     </div>
                 </div>
                 <div className='cursor-pointer group relative'>
-                    <img className='h-full' src="/g9.jpg" alt="" />
+                    <img data-aos="fade-up"
+                        data-aos-duration="2000" data-aos-delay="500" className='h-full' src="/g9.jpg" alt="" />
                     <div className="absolute  inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-20 transition-opacity duration-800"></div>
                     <div className="absolute top-0 text-white flex justify-center h-full items-center w-full  text-3xl    opacity-0 group-hover:opacity-100 transition-opacity duration-800">
                         <LuInstagram />
