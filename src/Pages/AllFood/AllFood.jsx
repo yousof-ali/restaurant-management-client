@@ -20,6 +20,9 @@ const AllFood = () => {
     console.log(pageArray)
 
     useEffect(() => {
+        if(forbtn === ''){
+            return
+        }
         fetch(`http://localhost:5000/foods?page=${currentPage}&size=${dataEachPage}&category=${forbtn}`)
             .then(res => res.json())
             .then(result => {
@@ -74,6 +77,7 @@ const AllFood = () => {
             .then(result => {
                 setAllFood(result);
                 setSearchTerm(search);
+                setForbtn('')
                 console.log(result.length)
             })
             .catch((err) => {
