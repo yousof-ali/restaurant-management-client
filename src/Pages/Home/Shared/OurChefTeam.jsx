@@ -62,21 +62,36 @@ const OurChefTeam = () => {
               ))}
             </Swiper>
           </div>
-          <div className='text-white hidden md:flex flex-col w-1/2 justify-center    mx-auto'>
-          <h2 className='md:text-4xl mb-6 text-center font-bold'>What Makes Our Chefs Unique?</h2>
-          <div className='ml-12 space-y-2'>
-            <p className='flex items-center'><img className='w-10' src="/awar.png" alt="" /><p>
-            <span className='text-lg font-bold text-green-500'> Award-Winning Talent </span> – Our chefs are globally recognized for their innovative cuisine.</p></p>
-            
-            <p className='flex items-center'><img className='w-10' src="/inge.png" alt="" /><p>
-            <span className='text-lg font-bold text-green-500'> Fresh & High-Quality Ingredients </span> – Sourced locally and globally for an authentic taste.</p></p>
-            <p className='flex items-center'><img className='w-10' src="/expert.png" alt="" /><p>
-            <span className='text-lg font-bold text-green-500'>  Expertise & Passion  </span> – From traditional recipes to modern gastronomy, they create magic on every plate.</p></p>
-          </div>
+          <div className='text-white hidden md:flex flex-col w-1/2 justify-center items-center    mx-auto'>
+
+
+            <h2 className='md:text-4xl mb-6 text-center font-bold'>What Makes Our Chefs Unique?</h2>
+            <div className='flex flex-col justify-center space-y-4'>
+
+              <div>
+                <p className='flex '>
+                <img className='w-10 h-10' src="/awar.png" alt="" />
+                <span className='text-lg font-bold text-green-500'> Award-Winning Talent  – <br /> <span className='text-sm text-white font-light'>Our chefs are globally recognized for their innovative cuisine.</span> </span>
+                </p>
+              </div>
+              <div>
+                <p className='flex '>
+                <img className='w-10 h-10' src="/inge.png" alt="" />
+                <span className='text-lg font-bold text-green-500'> Fresh & High-Quality Ingredients  – <br /> <span className='text-sm font-light text-white'>Sourced locally and globally for an authentic taste.</span> </span>
+                </p>
+              </div>
+              <div>
+                <p className='flex '>
+                <img className='w-10 h-10' src="/expert.png" alt="" />
+                <span className='text-lg font-bold text-green-500'>Expertise & Passion   – <br /> <span className='text-sm text-white font-light'>From traditional recipes to modern gastronomy, they create magic on every plate.</span> </span>
+                </p>
+              </div>
+              <p className='flex '></p>
           </div>
         </div>
       </div>
     </div>
+    </div >
   );
 };
 
