@@ -29,7 +29,7 @@ const OurChefTeam = () => {
             <Swiper
               modules={[Navigation]}
               navigation={true}
-              slidesPerView={1}
+              slidesPerView={chefs.length>1}
               loop={true}
               autoplay={{ delay: 3000 }}
               className="w-full"

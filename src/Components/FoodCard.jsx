@@ -10,7 +10,7 @@ import { getLocalStorage, removeLocalStorage, setLocalStorage } from '../utilite
 
 const FoodCard = ({ food, search }) => {
     const { _id, name, image, quantity, price, description } = food;
-    const { user, loader } = useAuth()
+    const { user, loader } = useAuth();
 
     const [favorite, setFavorite] = useState("");
 
@@ -25,7 +25,7 @@ const FoodCard = ({ food, search }) => {
                 
             } else {
                 try {
-                    const response = await fetch(`http://localhost:5000/get-favorite?email=${user?.email}`);
+                    const response = await fetch(`https://restaurant-management-server-silk.vercel.app/get-favorite?email=${user?.email}`);
                     const result = await response.json();
                     const filter = result.find(single => single.food_id == _id);
                     setFavorite(filter)
@@ -48,7 +48,7 @@ const FoodCard = ({ food, search }) => {
             return;
         }
 
-        fetch(`http://localhost:5000/set-favorite/${id}`, {
+        fetch(`https://restaurant-management-server-silk.vercel.app/set-favorite/${id}`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -58,9 +58,9 @@ const FoodCard = ({ food, search }) => {
             .then(res => res.json())
             .then(result => {
                 if (result.insertedId) {
-                    setFavorite(id);;
-                }
-            })
+                    setFavorite(id);
+                };
+            });
 
 
     };
@@ -69,21 +69,20 @@ const FoodCard = ({ food, search }) => {
             removeLocalStorage(id);
             setFavorite('');
             return;
-        }
+        };
 
-        fetch(`http://localhost:5000/delete-fav/${id}`,{
+        fetch(`https://restaurant-management-server-silk.vercel.app/delete-fav/${id}`,{
             method:"DELETE"
         })
         .then(res => res.json())
         .then(result => {
-            console.log(result);
             if(result.deletedCount>0){
                 setFavorite('');
-            }
+            };
             
-        })
+        });
 
-    }
+    };
 
     return (
         <div className="group border border-gray-400 bg-[#f2f6ff] hover:bg-white hover:shadow-xl hover:border-green-500 rounded-xl   duration-500 transition-transform hover:-translate-y-0.5">

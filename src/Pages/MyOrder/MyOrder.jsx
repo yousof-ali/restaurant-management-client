@@ -10,18 +10,17 @@ import Loader from '../../Components/Loader';
 import axios from 'axios';
 
 const MyOrder = () => {
-    const { user } = useAuth()
+    const { user } = useAuth();
     const [myOrder, setMyOrder] = useState([]);
     const [loading,setLoading] = useState(false);
     useEffect(() => {
-        setLoading(true)
-        axios.get(`http://localhost:5000/my-orders?email=${user.email}`,{withCredentials:true})
+        setLoading(true);
+        axios.get(`https://restaurant-management-server-silk.vercel.app/my-orders?email=${user.email}`,{withCredentials:true})
             .then(result => {
-                console.log(result);
-                setMyOrder(result.data)
-                setLoading(false)
+                setMyOrder(result.data);
+                setLoading(false);
             })
-    }, [user.email])
+    }, [user.email]);
 
 
     const handleDelete = (id) => {
@@ -35,7 +34,7 @@ const MyOrder = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/delete-order/${id}`, {
+                fetch(`https://restaurant-management-server-silk.vercel.app/delete-order/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
@@ -49,14 +48,13 @@ const MyOrder = () => {
 
                             const filter = myOrder.filter(single => single._id !== id);
                             setMyOrder(filter);
-                            console.log(filter)
-                        }
+                        };
                     })
 
 
-            }
+            };
         });
-    }
+    };
     return (
         <div className='font-signika'>
 

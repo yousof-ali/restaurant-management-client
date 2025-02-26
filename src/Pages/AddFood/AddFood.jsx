@@ -6,17 +6,16 @@ import { useNavigate } from 'react-router-dom';
 
 const AddFood = () => {
     const { user } = useAuth();
-    console.log(user)
-    const [category, setCategory] = useState('')
+    const [category, setCategory] = useState('');
     const [chef, setChef] = useState('');
     const [origin, setOrigin] = useState('');
-    const [cookinTime, setCookingTime] = useState('')
-    const [description, setDescription] = useState('')
-    const [chef_special, setChef_special] = useState('')
+    const [cookinTime, setCookingTime] = useState('');
+    const [description, setDescription] = useState('');
+    const [chef_special, setChef_special] = useState('');
     const [ingredients, setIngredients] = useState('');
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const handleCategory = (e) => {
-        setCategory(e.target.value)
+        setCategory(e.target.value);
 
     }
     const handleChef = (e) => {
@@ -51,14 +50,13 @@ const AddFood = () => {
         const quantity = parseInt(form.quantity.value);
         const price = parseInt(form.price.value);
         const email = form.email.value;
-        const cooking_time = `${cookinTime} minutes`
+        const cooking_time = `${cookinTime} minutes`;
         const rating = parseInt((Math.random() * (5 - 2) + 2).toFixed(1));
 
 
-        const newFood = { name, image, quantity, price, email, category, cooking_time, chef_id: chef, origin, description, chef_special, ingredients: ingredients.split('\n'), rating }
-        console.log(newFood);
+        const newFood = { name, image, quantity, price, email, category, cooking_time, chef_id: chef, origin, description, chef_special, ingredients: ingredients.split('\n'), rating };
 
-        fetch('http://localhost:5000/new-food', {
+        fetch('https://restaurant-management-server-silk.vercel.app/new-food', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -78,12 +76,13 @@ const AddFood = () => {
                       form.reset();
                       navigate('/my-food');
 
-                }
+                };
             })
             .catch(() => {
                 console.log(err.message)
-            })
-    }
+            });
+    };
+    
     return (
         <div>
             <div className='md:h-[30vh] rounded-xl  h-[20vh] relative'>

@@ -6,10 +6,9 @@ const Cate = () => {
         fetch('/categories.json')
         .then(res => res.json())
         .then(result => {
-            setData(result)
-            console.log(result);
-        })
-    },[])
+            setData(result);
+        });
+    },[]);
     return (
         <div className='grid  bg-base-200 py-4 gap-4 grid-cols-3 justify-center items-center lg:grid-cols-6'>
             {

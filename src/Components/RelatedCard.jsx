@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const RelatedCard = ({data}) => {
-    const {_id, name, image, quantity, price, description } = data
+    const {_id, name, image } = data;
     return (
         <Link to={`/details/${_id}`}>
         <div className='duration-500 shadow hover:shadow-2xl mb-4 border-gray-500 rounded-2xl'>

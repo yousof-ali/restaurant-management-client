@@ -37,19 +37,17 @@ const AuthProvider = ({children}) => {
     
             if (currentUser?.email) {
                 const user = { email: currentUser.email };
-    
-                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                axios.post('https://restaurant-management-server-silk.vercel.app/jwt', user, { withCredentials: true })
                     .then(res => {
-                        console.log(res.data);
+                        
                         setLoader(false); 
                     })
                     .catch(err => console.error('JWT Error:', err));
             }else{
-                axios.post('http://localhost:5000/remove-token',{},{withCredentials:true})
+                axios.post('https://restaurant-management-server-silk.vercel.app/remove-token',{},{withCredentials:true})
                 .then(res => {
-                    console.log(res.data)
-                    setLoader(false)
-                })
+                    setLoader(false);
+                });
             }
         });
     

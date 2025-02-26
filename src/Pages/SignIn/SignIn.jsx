@@ -18,7 +18,7 @@ const SignIn = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        setError('')
+        setError('');
         const email = e.target.email.value;
         const password = e.target.password.value;
 
@@ -35,16 +35,16 @@ const SignIn = () => {
 
             })
             .catch((err) => {
-                setError(err.message)
+                setError(err.message);
             })
     };
 
     const handlePasswordHide = () => {
-        setHide(!hide)
-    }
+        setHide(!hide);
+    };
 
     const handleGoogleLogin = () => {
-        setError('')
+        setError('');
         googleLogin()
         .then(_ => {
               console.log(_.user)
@@ -52,28 +52,28 @@ const SignIn = () => {
 
         })
         .catch((err) => {
-            setError(err.message)
-        })
+            setError(err.message);
+        });
     };
 
     const handleForgetPassword = () => {
         setError('');
-        setLoading(true)
+        setLoading(true);
         const email  = emialRef.current.value;
         if(email === ''){
-            setError("Email field is empty! ")
-            setLoading(false)
+            setError("Email field is empty! ");
+            setLoading(false);
             return;
-        }
+        };
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
         if (!emailRegex.test(email)) {
             setError("Invalid email format!");
-            setLoading(false)
+            setLoading(false);
             return;
-        }
+        };
         forgetPassword(email)
         .then(_ => {
-            setLoading(false)
+            setLoading(false);
             Swal.fire({
                 title: 'Password Reset Email Sent!',
                 text: 'Please check your email to reset your password.',
@@ -84,9 +84,9 @@ const SignIn = () => {
              
         })
         .catch((err) => {
-            setError(err.message)
-        })
-    }
+            setError(err.message);
+        });
+    };
 
     return (
         <div className="min-h-[80vh] bg-white  flex items-center justify-center py-10 px-4">

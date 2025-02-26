@@ -41,7 +41,6 @@ const Header = () => {
             }
         });   
     }
-    console.log(user)
     return (
         <div className='bg-white '>
             <div className="navbar  max-w-[1600px] mx-auto">

@@ -12,16 +12,15 @@ import OurServices from './Shared/OurServices';
 AOS.init();
 
 const Home = () => {
-    const [totalPrduct,setTotalProduct] = useState({})
+    const [totalPrduct,setTotalProduct] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/total-document`)
+        fetch(`https://restaurant-management-server-silk.vercel.app/total-document`)
         .then(res => res.json())
         .then(result => {
-            console.log(result);
-            setTotalProduct(result)
+            setTotalProduct(result);
         })
-    },[])
+    },[]);
     return (
         <div className='font-signika'>
             <Slider />

@@ -1,14 +1,11 @@
-
-import { button } from 'motion/react-client';
-import React, { useEffect, useId, useState } from 'react';
-import { Link, useLoaderData, useNavigate, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import {  useNavigate, useParams } from 'react-router-dom';
 import { TbCurrencyTaka } from "react-icons/tb";
 import CommonButton from '../../Components/CommonButton';
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 import Swal from 'sweetalert2';
 import useAuth from '../../Hook/useAuth';
-import FoodCard from '../../Components/FoodCard';
 import RelatedCard from '../../Components/RelatedCard';
 
 
@@ -21,7 +18,7 @@ const Details = () => {
     const[related,setRelated] = useState([]);
     const { user } = useAuth();
     const currentTime = new Date();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const shortMonthNames = [
         'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
         'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
@@ -32,32 +29,31 @@ const Details = () => {
         fetch('/ourChef.json')
         .then(res => res.json())
         .then(result => {
-            console.log(result);
-            const singleChef = result.find(single => single.chef_id === data.chef_id)
+            const singleChef = result.find(single => single.chef_id === data.chef_id);
             setChef(singleChef);
-        })
-    },[data])
+        });
+    },[data]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/single-food/${id}`)
+        fetch(`https://restaurant-management-server-silk.vercel.app/single-food/${id}`)
             .then(res => res.json())
             .then(result => {
                 setData(result);
             })
             .catch((err) => {
                 console.log(err.message);
-            })
-    }, [id])
-    const { _id, name, image, category, origin, quantity, price, rating, description, cooking_time, ingredients, chef_special, chef_name, chef_id } = data
+            });
+    }, [id]);
+    const { _id, name, image, category, origin, quantity, price, rating, description, cooking_time, ingredients, chef_special, chef_name, chef_id } = data;
 
     const handleminus = () => {
         if (purchase > 0) {
-            setpurchase(purchase - 1)
-        }
+            setpurchase(purchase - 1);
+        };
     }
     const handlePluse = () => {
         if (purchase < quantity) {
-            setpurchase(purchase + 1)
+            setpurchase(purchase + 1);
         } else {
             Swal.fire({
                 icon: "error",
@@ -65,22 +61,21 @@ const Details = () => {
                 text: " You have reached the maximum available quantity!",
                 showCloseButton: true
             });
-        }
+        };
 
     };
 
     useEffect(() =>{
-        fetch(`http://localhost:5000/foods?category=${category}`)
+        fetch(`https://restaurant-management-server-silk.vercel.app/foods?category=${category}`)
         .then(res => res.json())
         .then(result => {
             const filtered = result.filter(single => single._id !== _id);
             setRelated(filtered);
-            // console.log(result)
         })
         .catch((err) => {
             console.log(err.message);
         })
-    } ,[category,_id])
+    } ,[category,_id]);
 
     const handlePurchase = () => {
         const product_name = name;
@@ -91,9 +86,7 @@ const Details = () => {
         const buyer_email = user?.email;
         const date = `${currentTime.getDate()} ${shortMonthNames[currentTime.getMonth()]} ${currentTime.getFullYear()}`
         const order = { product_ID, product_name, product_price, product_quantity, buyer_name, buyer_email, date }
-        console.log(order);
-        console.log(quantity - purchase);
-        fetch('http://localhost:5000/order', {
+        fetch('https://restaurant-management-server-silk.vercel.app/order', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -103,7 +96,7 @@ const Details = () => {
             .then(res => res.json())
             .then(result => {
                 if (result.insertedId) {
-                    fetch(`http://localhost:5000/quantity/${_id}`, {
+                    fetch(`https://restaurant-management-server-silk.vercel.app/quantity/${_id}`, {
                         method: "PUT",
                         headers: {
                             'content-type': 'application/json'
@@ -125,13 +118,13 @@ const Details = () => {
                                     draggable: true
                                 });
                                 navigate('/my-orders')
-                            }
+                            };
                         })
                 }
             })
             .catch((err) => {
                 console.log(err.message);
-            })
+            });
 
     };
 
@@ -241,7 +234,7 @@ const Details = () => {
                     <h2 className='text-3xl font-bold mb-4'>Related Product</h2>
                     <div className='grid grid-cols-3 gap-4 md:grid-cols-3 lg:grid-cols-4'>
                         {
-                            related.map(single => <RelatedCard data={single} key={single._id}></RelatedCard>)
+                            related?.map(single => <RelatedCard data={single} key={single._id}></RelatedCard>)
                         }
                     </div>
                 </div>

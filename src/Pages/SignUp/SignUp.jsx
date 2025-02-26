@@ -26,10 +26,9 @@ const SignUp = () => {
         let photo = e.target.photo.value;
         if(!photo){
             photo = 'https://i.ibb.co.com/3YvXRrH0/user.png'
-        }
+        };
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(name, photo, email, password)
 
         if (password.length < 6) {
             setError('Password must be at least 6 characters long!');
@@ -40,7 +39,7 @@ const SignUp = () => {
         } else if (!/^(?=.*[a-z])/.test(password)) {
             setError('Password must include at least one lowercase letter!');
             return;
-        }
+        };
         createUser(email,password)
         .then(res => {
             updateProfile(res.user, {
@@ -55,11 +54,11 @@ const SignUp = () => {
                     showConfirmButton: false,
                     timer: 1500
                   });
-                navigate('/')
+                navigate('/');
             })
         })
         .catch((err) => {
-            console.log(err.message)
+            console.log(err.message);
         })
 
         // createUser(email, password)
@@ -73,8 +72,8 @@ const SignUp = () => {
     };
 
     const handlePasswordHide = () => {
-        setHide(!hide)
-    }
+        setHide(!hide);
+    };
 
     return (
         <div className="min-h-[80vh] bg-white  flex items-center justify-center py-10 px-4">

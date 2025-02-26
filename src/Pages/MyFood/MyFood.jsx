@@ -12,15 +12,15 @@ import axios from 'axios';
 const MyFood = () => {
     const [myfood, setMyfood] = useState([])
     const [loader,setLoader] = useState(false);
-    const { user } = useAuth()
+    const { user } = useAuth();
     useEffect(() => {
         setLoader(true);
-        axios.get(`http://localhost:5000/my-food?email=${user?.email}`,{withCredentials:true})
+        axios.get(`https://restaurant-management-server-silk.vercel.app/my-food?email=${user?.email}`,{withCredentials:true})
             .then(result => {
                 setMyfood(result.data);
-                setLoader(false)
+                setLoader(false);
             })
-    }, [user.email])
+    }, [user.email]);
     return (
         <div className='font-signika'>
 

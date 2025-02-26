@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import FoodCard from '../../../Components/FoodCard';
-import CommonButton from '../../../Components/CommonButton';
 import PrimaryButton from "../../../Components/PrimaryButton"
 import { Link } from 'react-router-dom';
 import Loader from '../../../Components/Loader';
@@ -11,14 +10,13 @@ import { FiArrowUpRight } from "react-icons/fi";
 const TopPurchase = () => {
     const [topPurchase,setTopPurchase] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/top-purchase')
+        fetch('https://restaurant-management-server-silk.vercel.app/top-purchase')
         .then(res => res.json()
         )
         .then(result => {
-            setTopPurchase(result)
-            console.log(result);
+            setTopPurchase(result);
         })
-    },[])
+    },[]);
     return (
         <div className='md:my-10 '>
             <div>

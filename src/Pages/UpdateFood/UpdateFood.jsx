@@ -5,38 +5,38 @@ import CommonButton from '../../Components/CommonButton';
 import Swal from 'sweetalert2';
 
 const UpdateFood = () => {
-    const { id } = useParams()
-    const [data, setData] = useState({})
+    const { id } = useParams();
+    const [data, setData] = useState({});
     const { user } = useAuth();
-    const [category, setCategory] = useState('')
+    const [category, setCategory] = useState('');
     const [origin, setOrigin] = useState('');
-    const [cookinTime, setCookingTime] = useState('')
-    const [description, setDescription] = useState('')
+    const [cookinTime, setCookingTime] = useState('');
+    const [description, setDescription] = useState('');
     const [ingredients, setIngredients] = useState('');
     const navigate=useNavigate();
     const handleCategory = (e) => {
-        setCategory(e.target.value)
+        setCategory(e.target.value);
 
-    }
+    };
 
     const handleOrigin = (e) => {
         setOrigin(e.target.value);
 
-    }
+    };
     const handleTime = (e) => {
         setCookingTime(e.target.value);
 
-    }
+    };
     const handleDescription = (e) => {
         setDescription(e.target.value);
 
-    }
+    };
     const handleIngredients = (e) => {
         setIngredients(e.target.value);
-    }
+    };
 
     useEffect(() => {
-        fetch(`http://localhost:5000/single-food/${id}`)
+        fetch(`https://restaurant-management-server-silk.vercel.app/single-food/${id}`)
             .then(res => res.json())
             .then(result => {
                 setData(result);
@@ -46,7 +46,7 @@ const UpdateFood = () => {
                 setCookingTime(result.cooking_time ? result.cooking_time.replace(" minutes", "") : "");
                 setDescription(result.description || "");
             })
-    }, [id])
+    }, [id]);
 
 
     const handleUpdate = (e) => {
@@ -56,11 +56,11 @@ const UpdateFood = () => {
         const image = form.image.value;
         const quantity = parseInt(form.quantity.value);
         const price = parseInt(form.price.value);
-        const cooking_time = `${cookinTime} minutes`
+        const cooking_time = `${cookinTime} minutes`;
 
-        const updatedData = { name, image, quantity, price, category, cooking_time, origin, description, ingredients: ingredients.split("\n").map(item => item.trim()).filter(Boolean) }
+        const updatedData = { name, image, quantity, price, category, cooking_time, origin, description, ingredients: ingredients.split("\n").map(item => item.trim()).filter(Boolean) };
 
-        fetch(`http://localhost:5000/update-food/${id}`, {
+        fetch(`https://restaurant-management-server-silk.vercel.app/update-food/${id}`, {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json'
@@ -77,10 +77,10 @@ const UpdateFood = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    navigate('/my-food')
-                }
+                    navigate('/my-food');
+                };
             })
-    }
+    };
 
     return (
         <div>
