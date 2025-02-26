@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../Hook/useAuth';
-import { MdOutlineEdit } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import CommonButton from '../../Components/CommonButton';
 import UpdateButton from '../../Components/UpdateButton'
 import { GoEye } from "react-icons/go";
 import Loader from '../../Components/Loader';
+import axios from 'axios';
 
 
 
@@ -15,12 +15,10 @@ const MyFood = () => {
     const { user } = useAuth()
     useEffect(() => {
         setLoader(true);
-        fetch(`http://localhost:5000/my-food?email=${user?.email}`)
-            .then(res => res.json())
+        axios.get(`http://localhost:5000/my-food?email=${user?.email}`,{withCredentials:true})
             .then(result => {
-                setMyfood(result);
+                setMyfood(result.data);
                 setLoader(false)
-                console.log(result)
             })
     }, [user.email])
     return (
@@ -43,7 +41,7 @@ const MyFood = () => {
                     <tbody>
                         
                         {
-                            myfood.map((single, indx) => <tr key={indx} className='hover:shadow-2xl'>
+                            myfood?.map((single, indx) => <tr key={indx} className='hover:shadow-2xl'>
                                 <td>
                                     {indx + 1}
                                 </td>

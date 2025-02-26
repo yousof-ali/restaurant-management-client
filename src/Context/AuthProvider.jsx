@@ -1,6 +1,7 @@
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
 import { auth } from '../Firebase/firebaseConfig';
+import axios from 'axios';
 
 export const AuthContext = createContext(null);
 const AuthProvider = ({children}) => {
@@ -30,14 +31,30 @@ const AuthProvider = ({children}) => {
 
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth,currentUser => {
-            setUser(currentUser)
-            setLoader(false);
-        })
-        return () => {
-            unsubscribe();
-        }
-    },[]);
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            
+    
+            if (currentUser?.email) {
+                const user = { email: currentUser.email };
+    
+                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data);
+                        setLoader(false); 
+                    })
+                    .catch(err => console.error('JWT Error:', err));
+            }else{
+                axios.post('http://localhost:5000/remove-token',{},{withCredentials:true})
+                .then(res => {
+                    console.log(res.data)
+                    setLoader(false)
+                })
+            }
+        });
+    
+        return () => unsubscribe();
+    }, []);
 
     const forgetPassword =(email) =>{
         return sendPasswordResetEmail(auth,email);

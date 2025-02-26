@@ -1,7 +1,7 @@
 import React from 'react';
 import { LuInstagram } from "react-icons/lu";
 import AOS from 'aos';
-import { Helmet } from 'react-helmet-async';
+
 AOS.init()
 
 

@@ -7,6 +7,7 @@ import { MdOutlineEdit } from "react-icons/md";
 import { GoEye } from "react-icons/go";
 import Swal from 'sweetalert2';
 import Loader from '../../Components/Loader';
+import axios from 'axios';
 
 const MyOrder = () => {
     const { user } = useAuth()
@@ -14,11 +15,10 @@ const MyOrder = () => {
     const [loading,setLoading] = useState(false);
     useEffect(() => {
         setLoading(true)
-        fetch(`http://localhost:5000/my-orders?email=${user.email}`)
-            .then(res => res.json())
+        axios.get(`http://localhost:5000/my-orders?email=${user.email}`,{withCredentials:true})
             .then(result => {
                 console.log(result);
-                setMyOrder(result)
+                setMyOrder(result.data)
                 setLoading(false)
             })
     }, [user.email])
